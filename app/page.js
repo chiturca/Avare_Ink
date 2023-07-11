@@ -1,6 +1,5 @@
 import { CardList } from "./helpers/CardList";
 import Card from "./components/Card";
-import Nav from "./components/Nav";
 import img from "./assets/img.jpg";
 import Image from "next/image";
 

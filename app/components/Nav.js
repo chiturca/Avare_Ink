@@ -1,15 +1,14 @@
 import Link from "next/link";
 import Logo from "./Logo";
 
+export const links = [
+  { href: "/", name: "Ana Sayfa" },
+  { href: "/design", name: "Dizayn" },
+  { href: "/aftercare", name: "Bakım" },
+  { href: "/contact", name: "İletişim" },
+  { href: "/rezervasyon", name: "Rezervasyon" },
+];
 export default function Nav() {
-  const links = [
-    { href: "/", name: "Home" },
-    { href: "/tattoo", name: "Tattoo" },
-    { href: "/aftercare", name: "Aftercare" },
-    { href: "/contact", name: "Contact" },
-    { href: "/book", name: "Book" },
-  ];
-
   return (
     <>
       <div className="sticky top-0 z-10 w-full items-center justify-between font-mono text-sm lg:flex">
