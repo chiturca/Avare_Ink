@@ -3,10 +3,10 @@ import Logo from "./Logo";
 
 export const links = [
   { href: "/", name: "Ana Sayfa" },
-  { href: "/design", name: "Dizayn" },
+  { href: "/design", name: "Design" },
   { href: "/aftercare", name: "Bakım" },
   { href: "/contact", name: "İletişim" },
-  { href: "/rezervasyon", name: "Rezervasyon" },
+  { href: "/book", name: "Rezervasyon" },
 ];
 export default function Nav() {
   return (
