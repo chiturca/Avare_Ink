@@ -11,6 +11,7 @@ export default function Home() {
           className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] w-full"
           src={img}
           alt="Test"
+          priority
         />
       </div>
 
