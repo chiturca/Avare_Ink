@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { UserAuth } from "../api/AuthContext";
 import Logo from "./Logo";
+import { Dropdown, Avatar, Text, Grid, User } from "@nextui-org/react";
 
 export const links = [
   { href: "/", name: "Home" },
@@ -58,26 +59,43 @@ export default function Nav() {
         </nav>
       </div>
       {loading ? null : user ? (
-        <ul>
-          <li
-            onClick={handleSignOut}
-            className="m-7 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer"
-          >
-            <Image
-              className="m-auto h-16 w-16 rounded-full border-2 border-sky-200"
-              src={user.photoURL}
-              alt="UserAvatar"
-              width={50}
-              height={50}
-            />
-          </li>
-          <li
-            onClick={handleSignOut}
-            className="m-7 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer"
-          >
-            Sign Out
-          </li>
-        </ul>
+        <div className="m-7 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer">
+          <Dropdown placement="bottom-left">
+            <Dropdown.Trigger>
+              <Image
+                className="m-auto h-16 w-16 rounded-full border-2 border-sky-200"
+                src={user.photoURL}
+                alt="UserAvatar"
+                width={50}
+                height={50}
+              />
+            </Dropdown.Trigger>
+            <Dropdown.Menu color="secondary" aria-label="Avatar Actions">
+              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  Signed in as
+                </Text>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  {user.email}
+                </Text>
+              </Dropdown.Item>
+              <Dropdown.Item key="settings" withDivider>
+                My Settings
+              </Dropdown.Item>
+              <Dropdown.Item key="analytics" withDivider>
+                Analytics
+              </Dropdown.Item>
+              <Dropdown.Item key="system">System</Dropdown.Item>
+              <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
+              <Dropdown.Item key="help_and_feedback" withDivider>
+                Help & Feedback
+              </Dropdown.Item>
+              <Dropdown.Item key="logout" color="error" withDivider>
+                <div onClick={handleSignOut}>Sign Out</div>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
       ) : (
         <ul>
           <li

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.2",
+    "@nextui-org/react": "^1.0.0-beta.13",
     "autoprefixer": "10.4.14",
     "encoding": "^0.1.13",
     "eslint": "8.44.0",
