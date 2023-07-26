@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Dropdown, Text } from "@nextui-org/react";
 import { UserAuth } from "../api/AuthContext";
 import Logo from "./Logo";
-import { Dropdown, Avatar, Text, Grid, User } from "@nextui-org/react";
+import Button from "./ui/Button";
 
 export const links = [
   { href: "/", name: "Home" },
@@ -59,7 +60,7 @@ export default function Nav() {
         </nav>
       </div>
       {loading ? null : user ? (
-        <div className="m-7 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer">
+        <div className="m-10 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer">
           <Dropdown placement="bottom-left">
             <Dropdown.Trigger>
               <Image
@@ -70,7 +71,7 @@ export default function Nav() {
                 height={50}
               />
             </Dropdown.Trigger>
-            <Dropdown.Menu color="secondary" aria-label="Avatar Actions">
+            <Dropdown.Menu color="primary" aria-label="Avatar Actions">
               <Dropdown.Item key="profile" css={{ height: "$18" }}>
                 <Text b color="inherit" css={{ d: "flex" }}>
                   Signed in as
@@ -97,14 +98,7 @@ export default function Nav() {
           </Dropdown>
         </div>
       ) : (
-        <ul>
-          <li
-            onClick={hadleSignIn}
-            className="m-7 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] cursor-pointer"
-          >
-            Login
-          </li>
-        </ul>
+        <Button onClick={hadleSignIn} name="Login" />
       )}
     </div>
   );

@@ -1,7 +1,7 @@
-import { CardList } from "./helpers/CardList";
-import Card from "./components/Card";
-import img from "./assets/img.jpg";
 import Image from "next/image";
+import { CardList } from "./helpers/CardList";
+import Card from "./components/ui/Card";
+import img from "./assets/img.jpg";
 
 export default function Home() {
   return (
