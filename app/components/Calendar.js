@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ReactCalendar from "react-calendar";
 import { add, format } from "date-fns";
+import { CLOSING_TIME, INTERVAL, OPENINING_TIME } from "../helpers/config";
 
 export default function Calendar() {
   const [date, setDate] = useState({
@@ -9,13 +10,12 @@ export default function Calendar() {
     dateTime: null,
   });
 
-  console.log(date.dateTime);
   const getTimes = () => {
     if (!date.justDate) return;
     const { justDate } = date;
-    const beginning = add(justDate, { hours: 10 });
-    const end = add(justDate, { hours: 18 });
-    const interval = 60;
+    const beginning = add(justDate, { hours: OPENINING_TIME });
+    const end = add(justDate, { hours: CLOSING_TIME });
+    const interval = INTERVAL;
 
     const times = [];
     for (let i = beginning; i <= end; i = add(i, { minutes: interval })) {
