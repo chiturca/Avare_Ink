@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import { add, format } from "date-fns";
 import parse from "date-fns/parse";
@@ -13,16 +13,8 @@ import tattooSizes, {
   OPENINING_TIME,
 } from "../../helpers/config";
 import { Popover } from "@nextui-org/react";
-
-const eventList = [
-  {
-    id: 1,
-    title: "Small Tattoo",
-    start: new Date(2023, 7, 24, 10, 0),
-    end: new Date(2023, 7, 24, 12, 0),
-    size: "small",
-  },
-];
+import { db } from "@/firebase";
+import { addDoc, collection, onSnapshot } from "firebase/firestore";
 
 function parseDuration(duration) {
   if (typeof duration !== "string") {
@@ -44,6 +36,40 @@ export default function Scheduler(props) {
     dateTime: null,
     selectedSize: "",
   });
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "appointments"),
+      (snapshot) => {
+        const appointmentData = snapshot.docs.map((doc) => doc.data());
+        setEvents(appointmentData);
+      }
+    );
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleAppointmentCreate = async () => {
+    await addDoc(collection(db, "appointments"), {
+      title: `Tattoo (${tattooSizes[date.selectedSize]?.size}) ${format(
+        date.dateTime,
+        "kk:mm"
+      )} - ${format(
+        add(
+          date.dateTime,
+          parseDuration(tattooSizes[date.selectedSize]?.duration)
+        ),
+        "kk:mm"
+      )} `,
+      start: date.dateTime,
+      end: add(
+        date.dateTime,
+        parseDuration(tattooSizes[date.selectedSize]?.duration)
+      ),
+      size: date.selectedSize,
+    });
+  };
 
   const getTimes = () => {
     if (!date.justDate || !date.selectedSize) return;
@@ -77,8 +103,17 @@ export default function Scheduler(props) {
   const generatedEvents = date.selectedSize
     ? [
         {
-          id: 1,
-          title: `Tattoo (${tattooSizes[date.selectedSize]?.size})`,
+          id: events.length + 1,
+          title: `Tattoo (${tattooSizes[date.selectedSize]?.size}) ${format(
+            date.dateTime,
+            "kk:mm"
+          )} - ${format(
+            add(
+              date.dateTime,
+              parseDuration(tattooSizes[date.selectedSize]?.duration)
+            ),
+            "kk:mm"
+          )} `,
           start: date.dateTime,
           end: add(
             date.dateTime,
@@ -89,8 +124,6 @@ export default function Scheduler(props) {
       ]
     : [];
 
-  console.log(parseDuration(2));
-
   if (generatedEvents.length > 0) {
     generatedEvents[0].end = add(
       generatedEvents[0].start,
@@ -100,90 +133,83 @@ export default function Scheduler(props) {
 
   return (
     <>
-      {/* Display selected date and time */}
-      <p>
-        <br />
-        {date.justDate && (
-          <div>
-            <p>Selected Date: {format(date.justDate, "MMMM d, yyyy")}</p>
-            {date.selectedSize && (
-              <>
-                <p>Selected Size: {tattooSizes[date.selectedSize]?.size}</p>
-                <p>Duration: {tattooSizes[date.selectedSize].duration} hours</p>
-              </>
-            )}
-            {date.dateTime && (
-              <p>Selected Time: {format(date.dateTime, "kk:mm")}</p>
-            )}
+      <button onClick={handleAppointmentCreate}>Create Appointment</button>
 
-            {/* Size selection dropdown */}
-            <select
-              className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
-              onChange={(e) =>
-                setDate((prev) => ({ ...prev, selectedSize: e.target.value }))
-              }
-            >
-              <option value="">Select Tattoo Size</option>
-              {Object.keys(tattooSizes).map((size) => (
-                <option key={size} value={size}>
-                  {tattooSizes[size].size}
-                </option>
-              ))}
-            </select>
-            <Popover placement="bottom" showArrow={true}>
-              <Popover.Trigger>
-                <button className="p-2 px-3 m-5 rounded-md text-cyan-200 bg-gray-900">
-                  Available Time Slots
-                </button>
-              </Popover.Trigger>
-              <Popover.Content>
-                {times?.map((time, i) => (
-                  <div key={`time-${i}`}>
-                    <button
-                      className="p-1 px-3 bg-black"
-                      type="button"
-                      onClick={() =>
-                        setDate((prev) => ({ ...prev, dateTime: time }))
-                      }
-                    >
-                      {format(time, "kk:mm")}
-                    </button>
-                  </div>
-                ))}
-              </Popover.Content>
-            </Popover>
-          </div>
-        )}
-        {generatedEvents.length > 0 && (
-          <div>
-            <h2>Generated Events:</h2>
-            <ul>
-              {generatedEvents.map((event) => (
-                <li key={event.id}>
-                  {event.title} - {format(event.start, "MMMM d, yyyy kk:mm")} to{" "}
-                  {format(event.end, "kk:mm")}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <br />
-      </p>
+      {date.justDate && (
+        <div>
+          <p>Selected Date: {format(date.justDate, "MMMM d, yyyy")}</p>
+          <select
+            className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
+            onChange={(e) =>
+              setDate((prev) => ({ ...prev, selectedSize: e.target.value }))
+            }
+          >
+            <option value="">Select Tattoo Size</option>
+            {Object.keys(tattooSizes).map((size) => (
+              <option key={size} value={size}>
+                {tattooSizes[size].size}
+              </option>
+            ))}
+          </select>
+          {date.selectedSize && (
+            <>
+              <p>Selected Size: {tattooSizes[date.selectedSize]?.size}</p>
+              <p>Duration: {tattooSizes[date.selectedSize].duration}</p>
+              <Popover placement="bottom" showArrow={true}>
+                <Popover.Trigger>
+                  <button className="p-2 px-3 m-5 rounded-md text-cyan-200 bg-gray-900">
+                    Available Time Slots
+                  </button>
+                </Popover.Trigger>
+                <Popover.Content>
+                  {times?.map((time, i) => (
+                    <div key={`time-${i}`}>
+                      <button
+                        className="p-1 px-3 bg-black"
+                        type="button"
+                        onClick={() =>
+                          setDate((prev) => ({ ...prev, dateTime: time }))
+                        }
+                      >
+                        {format(time, "kk:mm")}
+                      </button>
+                    </div>
+                  ))}
+                </Popover.Content>
+              </Popover>
+              {date.dateTime && (
+                <p>Selected Time: {format(date.dateTime, "kk:mm")}</p>
+              )}
+            </>
+          )}
+        </div>
+      )}
+      {generatedEvents.length > 0 && (
+        <div>
+          <h2>Generated Events:</h2>
+          <ul>
+            {generatedEvents.map((event) => (
+              <li key={event.id}>
+                {event.title} - {format(event.start, "MMMM d, yyyy kk:mm")} to{" "}
+                {format(event.end, "kk:mm")}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <br />
 
-      {/* Calendar */}
       <div className="h-48">
         <Calendar
           localizer={localizer}
-          events={eventList}
+          events={[...events, ...generatedEvents]}
           startAccessor="start"
           endAccessor="end"
           style={{ height: 500 }}
           selectable={true}
           onSelectSlot={(slotInfo) => {
-            // The start and end times of the selected slot
             const { start } = slotInfo;
 
-            // Calculate end time based on selected size's duration
             const selectedDuration =
               date.selectedSize && tattooSizes[date.selectedSize]
                 ? tattooSizes[date.selectedSize].duration
@@ -191,11 +217,13 @@ export default function Scheduler(props) {
 
             const end = add(start, parseDuration(selectedDuration));
 
-            // Update your state with selected date and time
+            setEvents([...events, generatedEvents]);
+
             setDate((prev) => ({
               ...prev,
               justDate: new Date(start),
-              dateTime: new Date(start), // Set selected time
+              dateTime: new Date(start),
+              selectedSize: "",
             }));
           }}
         />

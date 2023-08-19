@@ -1,5 +1,4 @@
 import React from "react";
-import Calendar from "../components/Calendar/Calendar";
 import Scheduler from "../components/Calendar/Scheduler";
 
 export default function Book() {
@@ -30,7 +29,6 @@ export default function Book() {
         </li>
       </ul>
       {/* <div className="flex justify-center"> */}
-      {/* <Calendar /> */}
       <Scheduler />
       {/* </div> */}
     </div>
