@@ -14,16 +14,9 @@ export const links = [
   { href: "/book", name: "Book" },
 ];
 export default function Nav() {
-  const { user, googleSignIn, logOut } = UserAuth();
+  const { user, logOut } = UserAuth();
   const [loading, setLoading] = useState(true);
 
-  const hadleSignIn = async () => {
-    try {
-      await googleSignIn();
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -98,7 +91,9 @@ export default function Nav() {
           </Dropdown>
         </div>
       ) : (
-        <Button onClick={hadleSignIn} name="Login" />
+        <Link href="/login">
+          <Button name="Login" />
+        </Link>
       )}
     </div>
   );
