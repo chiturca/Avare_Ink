@@ -14,7 +14,13 @@ import tattooSizes, {
 } from "../../helpers/config";
 import { Popover } from "@nextui-org/react";
 import { db } from "@/firebase";
-import { addDoc, collection, onSnapshot } from "firebase/firestore";
+import {
+  Timestamp,
+  addDoc,
+  collection,
+  getDocs,
+  onSnapshot,
+} from "firebase/firestore";
 
 function parseDuration(duration) {
   if (typeof duration !== "string") {
@@ -37,13 +43,14 @@ export default function Scheduler(props) {
     selectedSize: "",
   });
   const [events, setEvents] = useState([]);
+  const [eventsFromFirestore, setEventsFromFirestore] = useState([]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "appointments"),
       (snapshot) => {
         const appointmentData = snapshot.docs.map((doc) => doc.data());
-        setEvents(appointmentData);
+        setEventsFromFirestore(appointmentData);
       }
     );
 
@@ -51,7 +58,11 @@ export default function Scheduler(props) {
   }, []);
 
   const handleAppointmentCreate = async () => {
-    await addDoc(collection(db, "appointments"), {
+    if (!date.dateTime || !date.selectedSize) {
+      // Display a message to the user or handle this scenario appropriately
+      return;
+    }
+    const newAppointment = {
       title: `Tattoo (${tattooSizes[date.selectedSize]?.size}) ${format(
         date.dateTime,
         "kk:mm"
@@ -62,15 +73,37 @@ export default function Scheduler(props) {
         ),
         "kk:mm"
       )} `,
-      start: date.dateTime,
-      end: add(
-        date.dateTime,
-        parseDuration(tattooSizes[date.selectedSize]?.duration)
+      start: Timestamp.fromDate(date.dateTime),
+      end: Timestamp.fromDate(
+        add(
+          date.dateTime,
+          parseDuration(tattooSizes[date.selectedSize]?.duration)
+        )
       ),
       size: date.selectedSize,
-    });
+    };
+    await addDoc(collection(db, "appointments"), newAppointment);
+
+    setEvents([...events, newAppointment]);
+    setEventsFromFirestore([...eventsFromFirestore, newAppointment]);
+    setDate((prev) => ({
+      ...prev,
+      dateTime: null,
+      selectedSize: "",
+    }));
   };
 
+  useEffect(() => {
+    const getAppointments = async () => {
+      const querySnapshot = await getDocs(collection(db, "appointments"));
+      const appointmentData = querySnapshot.docs.map((doc) => doc.data());
+      setEvents(appointmentData);
+    };
+
+    getAppointments();
+  }, []);
+
+  console.log(events);
   const getTimes = () => {
     if (!date.justDate || !date.selectedSize) return;
 
@@ -133,8 +166,6 @@ export default function Scheduler(props) {
 
   return (
     <>
-      <button onClick={handleAppointmentCreate}>Create Appointment</button>
-
       {date.justDate && (
         <div>
           <p>Selected Date: {format(date.justDate, "MMMM d, yyyy")}</p>
@@ -178,7 +209,15 @@ export default function Scheduler(props) {
                 </Popover.Content>
               </Popover>
               {date.dateTime && (
-                <p>Selected Time: {format(date.dateTime, "kk:mm")}</p>
+                <>
+                  <p>Selected Time: {format(date.dateTime, "kk:mm")}</p>
+                  <button
+                    onClick={handleAppointmentCreate}
+                    className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
+                  >
+                    Create Appointment
+                  </button>
+                </>
               )}
             </>
           )}
@@ -202,7 +241,16 @@ export default function Scheduler(props) {
       <div className="h-48">
         <Calendar
           localizer={localizer}
-          events={[...events, ...generatedEvents]}
+          events={[
+            ...events.map((event) => ({
+              id: event.id,
+              title: event.title,
+              start: event.start.toDate(),
+              end: event.end.toDate(),
+              size: event.size,
+            })),
+            eventsFromFirestore,
+          ]}
           startAccessor="start"
           endAccessor="end"
           style={{ height: 500 }}
@@ -217,7 +265,15 @@ export default function Scheduler(props) {
 
             const end = add(start, parseDuration(selectedDuration));
 
-            setEvents([...events, generatedEvents]);
+            const newEvent = {
+              id: events.length + 1,
+              title: `Appointment`,
+              start,
+              end,
+              size: date.selectedSize,
+            };
+
+            setEventsFromFirestore([...eventsFromFirestore, newEvent]);
 
             setDate((prev) => ({
               ...prev,
