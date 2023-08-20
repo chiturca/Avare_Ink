@@ -59,9 +59,17 @@ export default function Scheduler(props) {
 
   const handleAppointmentCreate = async () => {
     if (!date.dateTime || !date.selectedSize) {
-      // Display a message to the user or handle this scenario appropriately
+      alert("Please pick an hour from the slot first.");
       return;
     }
+
+    const defaultTime = new Date(date.dateTime).setHours(24, 0, 0, 0); // Convert default time to milliseconds
+    const selectedTime = date.dateTime.getTime(); // Get selected time in milliseconds
+
+    if (selectedTime === defaultTime) {
+      alert("you need to pick an hour from the slot");
+    }
+
     const newAppointment = {
       title: `Tattoo (${tattooSizes[date.selectedSize]?.size}) ${format(
         date.dateTime,
@@ -103,7 +111,6 @@ export default function Scheduler(props) {
     getAppointments();
   }, []);
 
-  console.log(events);
   const getTimes = () => {
     if (!date.justDate || !date.selectedSize) return;
 
@@ -214,6 +221,7 @@ export default function Scheduler(props) {
                   <button
                     onClick={handleAppointmentCreate}
                     className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
+                    disabled={!date.dateTime}
                   >
                     Create Appointment
                   </button>
@@ -238,7 +246,7 @@ export default function Scheduler(props) {
       )}
       <br />
 
-      <div className="h-48">
+      <div className="h-48 max-w-2xl">
         <Calendar
           localizer={localizer}
           events={[
@@ -257,18 +265,21 @@ export default function Scheduler(props) {
           selectable={true}
           onSelectSlot={(slotInfo) => {
             const { start } = slotInfo;
-
+            console.log(slotInfo);
             const selectedDuration =
               date.selectedSize && tattooSizes[date.selectedSize]
                 ? tattooSizes[date.selectedSize].duration
                 : "0 hours";
 
-            const end = add(start, parseDuration(selectedDuration));
+            const beginning = new Date(start);
+            beginning.setHours(OPENINING_TIME, 0, 0, 0);
+
+            const end = add(beginning, parseDuration(selectedDuration));
 
             const newEvent = {
               id: events.length + 1,
               title: `Appointment`,
-              start,
+              start: beginning,
               end,
               size: date.selectedSize,
             };
@@ -277,8 +288,8 @@ export default function Scheduler(props) {
 
             setDate((prev) => ({
               ...prev,
-              justDate: new Date(start),
-              dateTime: new Date(start),
+              justDate: new Date(beginning),
+              dateTime: beginning,
               selectedSize: "",
             }));
           }}
