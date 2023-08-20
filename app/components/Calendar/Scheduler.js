@@ -118,11 +118,24 @@ export default function Scheduler(props) {
     const beginning = add(justDate, { hours: OPENINING_TIME });
     const end = add(justDate, { hours: CLOSING_TIME });
     const interval = INTERVAL;
-    const duration = tattooSizes[selectedSize].duration;
+    const duration =
+      parseDuration(tattooSizes[selectedSize]?.duration)?.minutes || 0;
 
     const times = [];
     for (let i = beginning; i <= end; i = add(i, { minutes: interval })) {
-      times.push(i);
+      const slotEnd = add(i, { minutes: duration });
+
+      // Check if the slot overlaps with any existing appointments
+      const isSlotAvailable = !eventsFromFirestore.some(
+        (event) =>
+          (i >= event.start.seconds * 1000 && i <= event.end.seconds * 1000) ||
+          (slotEnd >= event.start.seconds * 1000 &&
+            slotEnd <= event.end.seconds * 1000)
+      );
+
+      if (isSlotAvailable) {
+        times.push(i);
+      }
     }
     return times;
   };
@@ -271,15 +284,12 @@ export default function Scheduler(props) {
                 ? tattooSizes[date.selectedSize].duration
                 : "0 hours";
 
-            const beginning = new Date(start);
-            beginning.setHours(OPENINING_TIME, 0, 0, 0);
-
-            const end = add(beginning, parseDuration(selectedDuration));
+            const end = add(start, parseDuration(selectedDuration));
 
             const newEvent = {
               id: events.length + 1,
               title: `Appointment`,
-              start: beginning,
+              start,
               end,
               size: date.selectedSize,
             };
@@ -288,8 +298,8 @@ export default function Scheduler(props) {
 
             setDate((prev) => ({
               ...prev,
-              justDate: new Date(beginning),
-              dateTime: beginning,
+              justDate: new Date(start),
+              dateTime: new Date(start),
               selectedSize: "",
             }));
           }}
