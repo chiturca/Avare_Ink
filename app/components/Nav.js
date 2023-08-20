@@ -14,16 +14,9 @@ export const links = [
   { href: "/book", name: "Book" },
 ];
 export default function Nav() {
-  const { user, googleSignIn, logOut } = UserAuth();
+  const { user, logOut } = UserAuth();
   const [loading, setLoading] = useState(true);
 
-  const hadleSignIn = async () => {
-    try {
-      await googleSignIn();
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -59,7 +52,7 @@ export default function Nav() {
           </ul>
         </nav>
       </div>
-      {/* {loading ? null : user ? (
+      {loading ? null : user ? (
         <div className="m-10 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer">
           <Dropdown placement="bottom-left">
             <Dropdown.Trigger>
@@ -98,8 +91,10 @@ export default function Nav() {
           </Dropdown>
         </div>
       ) : (
-        <Button onClick={hadleSignIn} name="Login" />
-      )} */}
+        <Link href="/login">
+          <Button name="Login" />
+        </Link>
+      )}
     </div>
   );
 }

@@ -21,6 +21,7 @@ import {
   getDocs,
   onSnapshot,
 } from "firebase/firestore";
+import { UserAuth } from "../../api/AuthContext";
 
 function parseDuration(duration) {
   if (typeof duration !== "string") {
@@ -37,6 +38,7 @@ function parseDuration(duration) {
 }
 
 export default function Scheduler(props) {
+  const { user } = UserAuth();
   const [date, setDate] = useState({
     justDate: null,
     dateTime: null,
@@ -125,7 +127,6 @@ export default function Scheduler(props) {
     for (let i = beginning; i <= end; i = add(i, { minutes: interval })) {
       const slotEnd = add(i, { minutes: duration });
 
-      // Check if the slot overlaps with any existing appointments
       const isSlotAvailable = !eventsFromFirestore.some(
         (event) =>
           (i >= event.start.seconds * 1000 && i <= event.end.seconds * 1000) ||
@@ -186,78 +187,86 @@ export default function Scheduler(props) {
 
   return (
     <>
-      {date.justDate && (
-        <div>
-          <p>Selected Date: {format(date.justDate, "MMMM d, yyyy")}</p>
-          <select
-            className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
-            onChange={(e) =>
-              setDate((prev) => ({ ...prev, selectedSize: e.target.value }))
-            }
-          >
-            <option value="">Select Tattoo Size</option>
-            {Object.keys(tattooSizes).map((size) => (
-              <option key={size} value={size}>
-                {tattooSizes[size].size}
-              </option>
-            ))}
-          </select>
-          {date.selectedSize && (
-            <>
-              <p>Selected Size: {tattooSizes[date.selectedSize]?.size}</p>
-              <p>Duration: {tattooSizes[date.selectedSize].duration}</p>
-              <Popover placement="bottom" showArrow={true}>
-                <Popover.Trigger>
-                  <button className="p-2 px-3 m-5 rounded-md text-cyan-200 bg-gray-900">
-                    Available Time Slots
-                  </button>
-                </Popover.Trigger>
-                <Popover.Content>
-                  {times?.map((time, i) => (
-                    <div key={`time-${i}`}>
-                      <button
-                        className="p-1 px-3 bg-black"
-                        type="button"
-                        onClick={() =>
-                          setDate((prev) => ({ ...prev, dateTime: time }))
-                        }
-                      >
-                        {format(time, "kk:mm")}
-                      </button>
-                    </div>
-                  ))}
-                </Popover.Content>
-              </Popover>
-              {date.dateTime && (
+      {user ? (
+        <>
+          {date.justDate && (
+            <div>
+              <p>Selected Date: {format(date.justDate, "MMMM d, yyyy")}</p>
+              <select
+                className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
+                onChange={(e) =>
+                  setDate((prev) => ({ ...prev, selectedSize: e.target.value }))
+                }
+              >
+                <option value="">Select Tattoo Size</option>
+                {Object.keys(tattooSizes).map((size) => (
+                  <option key={size} value={size}>
+                    {tattooSizes[size].size}
+                  </option>
+                ))}
+              </select>
+              {date.selectedSize && (
                 <>
-                  <p>Selected Time: {format(date.dateTime, "kk:mm")}</p>
-                  <button
-                    onClick={handleAppointmentCreate}
-                    className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
-                    disabled={!date.dateTime}
-                  >
-                    Create Appointment
-                  </button>
+                  <p>Selected Size: {tattooSizes[date.selectedSize]?.size}</p>
+                  <p>Duration: {tattooSizes[date.selectedSize].duration}</p>
+                  <Popover placement="bottom" showArrow={true}>
+                    <Popover.Trigger>
+                      <button className="p-2 px-3 m-5 rounded-md text-cyan-200 bg-gray-900">
+                        Available Time Slots
+                      </button>
+                    </Popover.Trigger>
+                    <Popover.Content>
+                      {times?.map((time, i) => (
+                        <div key={`time-${i}`}>
+                          <button
+                            className="p-1 px-3 bg-black"
+                            type="button"
+                            onClick={() =>
+                              setDate((prev) => ({ ...prev, dateTime: time }))
+                            }
+                          >
+                            {format(time, "kk:mm")}
+                          </button>
+                        </div>
+                      ))}
+                    </Popover.Content>
+                  </Popover>
+                  {date.dateTime && (
+                    <>
+                      <p>Selected Time: {format(date.dateTime, "kk:mm")}</p>
+                      <button
+                        onClick={handleAppointmentCreate}
+                        className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
+                        disabled={!date.dateTime}
+                      >
+                        Create Appointment
+                      </button>
+                    </>
+                  )}
                 </>
               )}
-            </>
+            </div>
           )}
-        </div>
+          {generatedEvents.length > 0 && (
+            <div>
+              <h2>Generated Events:</h2>
+              <ul>
+                {generatedEvents.map((event) => (
+                  <li key={event.id}>
+                    {event.title} - {format(event.start, "MMMM d, yyyy kk:mm")}{" "}
+                    to {format(event.end, "kk:mm")}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <br />
+        </>
+      ) : (
+        <>
+          <p>For creating an appointment, please login with google</p>
+        </>
       )}
-      {generatedEvents.length > 0 && (
-        <div>
-          <h2>Generated Events:</h2>
-          <ul>
-            {generatedEvents.map((event) => (
-              <li key={event.id}>
-                {event.title} - {format(event.start, "MMMM d, yyyy kk:mm")} to{" "}
-                {format(event.end, "kk:mm")}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      <br />
 
       <div className="h-48 max-w-2xl">
         <Calendar
