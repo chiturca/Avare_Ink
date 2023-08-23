@@ -1,10 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import { add, format, startOfDay } from "date-fns";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import getDay from "date-fns/getDay";
+import Link from "next/link";
+import { UserAuth } from "../../api/AuthContext";
+import { db } from "@/firebase";
+import {
+  Timestamp,
+  addDoc,
+  collection,
+  getDocs,
+  onSnapshot,
+} from "firebase/firestore";
+import { add, format, parse, startOfWeek, getDay, startOfDay } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import tattooSizes, {
@@ -24,16 +31,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@nextui-org/react";
-import { db } from "@/firebase";
-import {
-  Timestamp,
-  addDoc,
-  collection,
-  getDocs,
-  onSnapshot,
-} from "firebase/firestore";
-import { UserAuth } from "../../api/AuthContext";
-import Link from "next/link";
 import "./Scheduler.css";
 
 function parseDuration(duration) {
@@ -87,10 +84,9 @@ export default function Scheduler(props) {
     }
 
     const newAppointment = {
-      title: `${user.displayName} (${tattooSizes[date.selectedSize]?.size}) ${format(
-        date.dateTime,
-        "kk:mm"
-      )} - ${format(
+      title: `${user.displayName} (${
+        tattooSizes[date.selectedSize]?.size
+      }) ${format(date.dateTime, "kk:mm")} - ${format(
         add(
           date.dateTime,
           parseDuration(tattooSizes[date.selectedSize]?.duration)
@@ -132,7 +128,10 @@ export default function Scheduler(props) {
 
     const { justDate, selectedSize } = date;
     const now = new Date();
-    const beginning = add(justDate, { hours: Math.max(now.getHours() + 1, OPENINING_TIME) });
+    const beginning =
+      startOfDay(justDate).getTime() === startOfDay(now).getTime()
+        ? add(now, { hours: Math.max(now.getHours() + 1, OPENINING_TIME) })
+        : add(justDate, { hours: OPENINING_TIME });
     const end = add(justDate, { hours: CLOSING_TIME });
     const interval = INTERVAL;
     const duration =
@@ -168,11 +167,6 @@ export default function Scheduler(props) {
     getDay,
     locales,
   });
-
-  const isDateDisabled = (date) => {
-    const now = startOfDay(new Date());
-    return date < now;
-  };
 
   const generatedEvents = date.selectedSize
     ? [
@@ -301,11 +295,11 @@ export default function Scheduler(props) {
                     <Button color="danger" variant="light" onPress={onClose}>
                       Close
                     </Button>
-                      <Link href="/login">
-                    <Button color="primary" name="Login" onPress={onClose}>
-                    Login
-                    </Button>
-                      </Link>
+                    <Link href="/login">
+                      <Button color="primary" name="Login" onPress={onClose}>
+                        Login
+                      </Button>
+                    </Link>
                   </ModalFooter>
                 </>
               )}
@@ -332,25 +326,10 @@ export default function Scheduler(props) {
           endAccessor="end"
           style={{ height: 500 }}
           selectable={true}
-          dateCellWrapper={({ value, children }) => {
-            const isDisabled = (value) => {
-              const now = startOfDay(new Date());
-              return value < now;
-            };
-            return (
-              <div
-                className={`${
-                  isDisabled ? "disabled-date-cell" : ""
-                } date-cell-wrapper`}
-              >
-                {children}
-              </div>
-            );
-          }}
           onSelectSlot={(slotInfo) => {
             if (user) {
               const { start } = slotInfo;
-              const now = new Date();
+              const now = startOfDay(new Date());
 
               if (start < now) {
                 alert("Please select a future date and time.");
