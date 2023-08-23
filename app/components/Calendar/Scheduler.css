@@ -6,3 +6,7 @@
   background-color: #64ace3;
   opacity: 0.5;
 }
+.rbc-toolbar {
+  border: 1px solid white;
+  border-radius: 5px;
+}
