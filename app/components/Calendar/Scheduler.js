@@ -278,14 +278,14 @@ export default function Scheduler(props) {
       ) : (
         <div className="flex justify-center">
           <Button color="danger" variant="light" size="lg" onPress={onOpen}>
-            WARNING
+            LOGIN WARNING
           </Button>
           <Modal isOpen={isOpen} onOpenChange={onOpenChange} className="dark">
             <ModalContent>
               {(onClose) => (
                 <>
                   <ModalHeader className="flex flex-col gap-1">
-                    Warning
+                    Login Warning
                   </ModalHeader>
                   <ModalBody>
                     <p>For creating an appointment, please login with google</p>
@@ -294,11 +294,11 @@ export default function Scheduler(props) {
                     <Button color="danger" variant="light" onPress={onClose}>
                       Close
                     </Button>
-                    <Button color="primary" onPress={onClose}>
                       <Link href="/login">
-                        <Button name="Login" />
-                      </Link>
+                    <Button color="primary" name="Login" onPress={onClose}>
+                    Login
                     </Button>
+                      </Link>
                   </ModalFooter>
                 </>
               )}
