@@ -1,15 +1,12 @@
-.disabled-date-cell {
-    background-color: gray !important;
-    color: gray !important;
-    opacity: 0.5 !important; /* or any other styling to visually indicate it's disabled */
-    pointer-events: none !important; /* disable pointer events on the disabled cells */
-  }
-
-.rbc-event{
-    background-color:  rgb(186 230 253);
-    color: black;
+.rbc-event {
+  background-color: rgb(186 230 253);
+  color: black;
 }
-.rbc-today{
-    background-color: #64ace3;
-    opacity: 0.5;
+.rbc-today {
+  background-color: #64ace3;
+  opacity: 0.5;
+}
+.rbc-toolbar {
+  border: 1px solid white;
+  border-radius: 5px;
 }
