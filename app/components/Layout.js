@@ -8,8 +8,10 @@ export default function Layout({ children }) {
     <AuthContextProvider>
       <NextUIProvider>
         <Nav />
-        <main className="flex min-h-screen max-w-screen flex-col items-center justify-between p-16 dark">
+        <main className="flex min-h-screen max-w-screen flex-col items-center justify-between p-16">
+          <div className="dark">
           {children}
+          </div>
         </main>
       </NextUIProvider>
     </AuthContextProvider>
