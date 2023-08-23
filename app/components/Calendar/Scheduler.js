@@ -12,7 +12,18 @@ import tattooSizes, {
   INTERVAL,
   OPENINING_TIME,
 } from "../../helpers/config";
-import { Popover } from "@nextui-org/react";
+import {
+  Button,
+  Popover,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  PopoverContent,
+  PopoverTrigger,
+} from "@nextui-org/react";
 import { db } from "@/firebase";
 import {
   Timestamp,
@@ -22,6 +33,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { UserAuth } from "../../api/AuthContext";
+import Link from "next/link";
 
 function parseDuration(duration) {
   if (typeof duration !== "string") {
@@ -46,6 +58,7 @@ export default function Scheduler(props) {
   });
   const [events, setEvents] = useState([]);
   const [eventsFromFirestore, setEventsFromFirestore] = useState([]);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -210,16 +223,16 @@ export default function Scheduler(props) {
                   <p>Selected Size: {tattooSizes[date.selectedSize]?.size}</p>
                   <p>Duration: {tattooSizes[date.selectedSize].duration}</p>
                   <Popover placement="bottom" showArrow={true}>
-                    <Popover.Trigger>
+                    <PopoverTrigger>
                       <button className="p-2 px-3 m-5 rounded-md text-cyan-200 bg-gray-900">
                         Available Time Slots
                       </button>
-                    </Popover.Trigger>
-                    <Popover.Content>
+                    </PopoverTrigger>
+                    <PopoverContent className="dark">
                       {times?.map((time, i) => (
                         <div key={`time-${i}`}>
                           <button
-                            className="p-1 px-3 bg-black"
+                            className="p-1 px-2  hover:text-sky-200 hover:shadow-lg hover:scale-110"
                             type="button"
                             onClick={() =>
                               setDate((prev) => ({ ...prev, dateTime: time }))
@@ -229,7 +242,7 @@ export default function Scheduler(props) {
                           </button>
                         </div>
                       ))}
-                    </Popover.Content>
+                    </PopoverContent>
                   </Popover>
                   {date.dateTime && (
                     <>
@@ -263,13 +276,40 @@ export default function Scheduler(props) {
           <br />
         </>
       ) : (
-        <>
-          <p>For creating an appointment, please login with google</p>
-        </>
+        <div className="flex justify-center">
+          <Button color="danger" variant="light" size="lg" onPress={onOpen}>
+            WARNING
+          </Button>
+          <Modal isOpen={isOpen} onOpenChange={onOpenChange} className="dark">
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex flex-col gap-1">
+                    Warning
+                  </ModalHeader>
+                  <ModalBody>
+                    <p>For creating an appointment, please login with google</p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onPress={onClose}>
+                      Close
+                    </Button>
+                    <Button color="primary" onPress={onClose}>
+                      <Link href="/login">
+                        <Button name="Login" />
+                      </Link>
+                    </Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+        </div>
       )}
 
-      <div className="h-48 max-w-2xl">
+      <div className="h-48">
         <Calendar
+          className="dark"
           localizer={localizer}
           events={[
             ...events.map((event) => ({
@@ -286,31 +326,37 @@ export default function Scheduler(props) {
           style={{ height: 500 }}
           selectable={true}
           onSelectSlot={(slotInfo) => {
-            const { start } = slotInfo;
-            console.log(slotInfo);
-            const selectedDuration =
-              date.selectedSize && tattooSizes[date.selectedSize]
-                ? tattooSizes[date.selectedSize].duration
-                : "0 hours";
+            if (user) {
+              const { start } = slotInfo;
+              console.log(slotInfo);
+              const selectedDuration =
+                date.selectedSize && tattooSizes[date.selectedSize]
+                  ? tattooSizes[date.selectedSize].duration
+                  : "0 hours";
 
-            const end = add(start, parseDuration(selectedDuration));
+              const end = add(start, parseDuration(selectedDuration));
 
-            const newEvent = {
-              id: events.length + 1,
-              title: `Appointment`,
-              start,
-              end,
-              size: date.selectedSize,
-            };
+              const newEvent = {
+                id: events.length + 1,
+                title: `Appointment`,
+                start,
+                end,
+                size: date.selectedSize,
+              };
 
-            setEventsFromFirestore([...eventsFromFirestore, newEvent]);
+              setEventsFromFirestore([...eventsFromFirestore, newEvent]);
 
-            setDate((prev) => ({
-              ...prev,
-              justDate: new Date(start),
-              dateTime: new Date(start),
-              selectedSize: "",
-            }));
+              setDate((prev) => ({
+                ...prev,
+                justDate: new Date(start),
+                dateTime: new Date(start),
+                selectedSize: "",
+              }));
+            } else {
+              alert(
+                "Please log in to your Google account to create a new appointment."
+              );
+            }
           }}
         />
       </div>
