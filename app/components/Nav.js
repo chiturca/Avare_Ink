@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Dropdown, Text } from "@nextui-org/react";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/react";
 import { UserAuth } from "../api/AuthContext";
 import Logo from "./Logo";
 import Button from "./ui/Button";
@@ -34,7 +39,7 @@ export default function Nav() {
   }, [user]);
 
   return (
-    <div className="sticky top-0 z-10 w-full items-center justify-between font-mono text-sm lg:flex">
+    <div className="sticky top-0 z-10 w-full items-center justify-between font-mono text-sm lg:flex dark">
       <div className="z-10 w-full max-w-7xl items-center justify-between font-mono text-sm lg:flex drop-shadow-lg">
         <nav className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           <ul className="flex flex-row">
@@ -54,8 +59,8 @@ export default function Nav() {
       </div>
       {loading ? null : user ? (
         <div className="m-10 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer">
-          <Dropdown placement="bottom-left">
-            <Dropdown.Trigger>
+          <Dropdown placement="bottom-left" className="dark">
+            <DropdownTrigger>
               <Image
                 className="m-auto h-16 w-16 rounded-full border-2 border-sky-200"
                 src={user.photoURL}
@@ -63,31 +68,31 @@ export default function Nav() {
                 width={50}
                 height={50}
               />
-            </Dropdown.Trigger>
-            <Dropdown.Menu color="primary" aria-label="Avatar Actions">
-              <Dropdown.Item key="profile" css={{ height: "$18" }}>
-                <Text b color="inherit" css={{ d: "flex" }}>
+            </DropdownTrigger>
+            <DropdownMenu color="primary" aria-label="Avatar Actions">
+              <DropdownItem key="profile" css={{ height: "$18" }}>
+                <p b color="inherit" css={{ d: "flex" }}>
                   Signed in as
-                </Text>
-                <Text b color="inherit" css={{ d: "flex" }}>
+                </p>
+                <p b color="inherit" css={{ d: "flex" }}>
                   {user.email}
-                </Text>
-              </Dropdown.Item>
-              <Dropdown.Item key="settings" withDivider>
+                </p>
+              </DropdownItem>
+              <DropdownItem key="settings" withDivider>
                 My Settings
-              </Dropdown.Item>
-              <Dropdown.Item key="analytics" withDivider>
+              </DropdownItem>
+              <DropdownItem key="analytics" withDivider>
                 Analytics
-              </Dropdown.Item>
-              <Dropdown.Item key="system">System</Dropdown.Item>
-              <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
-              <Dropdown.Item key="help_and_feedback" withDivider>
+              </DropdownItem>
+              <DropdownItem key="system">System</DropdownItem>
+              <DropdownItem key="configurations">Configurations</DropdownItem>
+              <DropdownItem key="help_and_feedback" withDivider>
                 Help & Feedback
-              </Dropdown.Item>
-              <Dropdown.Item key="logout" color="error" withDivider>
+              </DropdownItem>
+              <DropdownItem key="logout" color="error" withDivider>
                 <div onClick={handleSignOut}>Sign Out</div>
-              </Dropdown.Item>
-            </Dropdown.Menu>
+              </DropdownItem>
+            </DropdownMenu>
           </Dropdown>
         </div>
       ) : (
