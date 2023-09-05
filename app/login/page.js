@@ -1,5 +1,5 @@
 "use client";
-import { createRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { UserAuth } from "../api/AuthContext";
 import { useRouter } from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -7,7 +7,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 export default function Login() {
   const router = useRouter();
   const { user, googleSignIn } = UserAuth();
-  const recaptchaRef = createRef();
+  const recaptchaRef = useRef(null);
 
   const hadleSignIn = async () => {
     try {
@@ -20,9 +20,19 @@ export default function Login() {
   useEffect(() => {
     if (user) {
       router.push("/book");
+    } else {
+      import("react-google-recaptcha").then((RecaptchaModule) => {
+        if (typeof document !== "undefined" && recaptchaRef.current) {
+          const ReCAPTCHA = RecaptchaModule.default;
+          new ReCAPTCHA({
+            sitekey: process.env.REACT_APP_RECAPTCHA_SITE_KEY,
+            // Set other reCAPTCHA options here
+            // ...
+          });
+        }
+      });
     }
   }, [router, user]);
-
   return (
     <div className="border flex flex-col items-center md:w-1/2 m-auto p-14 px-40 rounded-3xl shadow-[5px_5px_15px_-1px_rgba(0,0,0,0.3)] z-50">
       <h1 className="text-cyan-600 font-bold text-2xl pb-8 whitespace-nowrap">
