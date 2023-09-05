@@ -21,7 +21,7 @@ export const db = getFirestore(app);
 
 const appCheck = initializeAppCheck(app, {
   provider: new ReCaptchaEnterpriseProvider({
-    siteKey: process.env.REACT_APP_RECAPTCHA_SITE_KEY,
+    siteKey: process.env.NEXT_PUBLIC_REACT_APP_RECAPTCHA_SITE_KEY,
   }),
   isTokenAutoRefreshEnabled: true,
 });
