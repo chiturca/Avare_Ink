@@ -1,19 +1,15 @@
-"use client";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { UserAuth } from "../api/AuthContext";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import ReCAPTCHA from "react-google-recaptcha";
 
-const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), {
-  ssr: false,
-});
-
-export default function Login() {
+const Login = () => {
   const router = useRouter();
   const { user, googleSignIn } = UserAuth();
   const recaptchaRef = useRef(null);
 
-  const hadleSignIn = async () => {
+  const handleSignIn = async () => {
     try {
       await googleSignIn();
     } catch (error) {
@@ -46,7 +42,7 @@ export default function Login() {
         />
 
         <button
-          onClick={hadleSignIn}
+          onClick={handleSignIn}
           className="m-10 px-7 py-2.5 bg-sky-200 text-sky-900 font-medium text-xl text-shadow-[0 0 50px #bae6fd] 
              rounded-full shadow-md ease-in duration-300 hover:bg-sky-900 hover:text-sky-200 hover:shadow-lg hover:scale-110"
         >
@@ -55,4 +51,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;
