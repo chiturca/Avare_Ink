@@ -19,12 +19,12 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaEnterpriseProvider({
-    siteKey: process.env.NEXT_PUBLIC_REACT_APP_RECAPTCHA_SITE_KEY,
-  }),
-  isTokenAutoRefreshEnabled: true,
-});
+// const appCheck = initializeAppCheck(app, {
+//   provider: new ReCaptchaEnterpriseProvider({
+//     siteKey: process.env.NEXT_PUBLIC_REACT_APP_RECAPTCHA_SITE_KEY,
+//   }),
+//   isTokenAutoRefreshEnabled: true,
+// });
 
 // const admin = require("firebase-admin");
 

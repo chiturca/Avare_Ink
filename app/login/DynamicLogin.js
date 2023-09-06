@@ -1,7 +1,7 @@
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
-const DynamicLogin = dynamic(() => import("./page"), {
-  ssr: false,
-});
+// const DynamicLogin = dynamic(() => import("./page"), {
+//   ssr: false,
+// });
 
-export default DynamicLogin;
+// export default DynamicLogin;

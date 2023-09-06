@@ -2,18 +2,18 @@
 import React, { useEffect, useRef } from "react";
 import { UserAuth } from "../api/AuthContext";
 import { useRouter } from "next/navigation";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
   const router = useRouter();
   const { user, googleSignIn } = UserAuth();
-  const recaptchaRef = useRef(null);
+  // const recaptchaRef = useRef(null);
 
   const handleSignIn = async () => {
     try {
-      if (recaptchaRef.current) {
-        recaptchaRef.current.execute();
-      }
+      // if (recaptchaRef.current) {
+      //   recaptchaRef.current.execute();
+      // }
 
       await googleSignIn();
     } catch (error) {
@@ -24,11 +24,12 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       router.push("/book");
-    } else {
-      if (recaptchaRef.current) {
-        recaptchaRef.current.execute();
-      }
     }
+    // else {
+    //   if (recaptchaRef.current) {
+    //     recaptchaRef.current.execute();
+    //   }
+    // }
   }, [router, user]);
 
   return (
@@ -37,7 +38,7 @@ const Login = () => {
         SIGN IN WITH
       </h1>
       <div className="flex flex-col justify-center items-center p-10">
-        <ReCAPTCHA
+        {/* <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={process.env.NEXT_PUBLIC_REACT_APP_RECAPTCHA_SITE_KEY}
           size="invisible"
@@ -45,7 +46,7 @@ const Login = () => {
             console.log("reCAPTCHA value:", value);
           }}
           container="recaptcha-container"
-        />
+        /> */}
 
         <button
           onClick={handleSignIn}
