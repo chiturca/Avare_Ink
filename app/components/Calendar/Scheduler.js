@@ -56,7 +56,11 @@ export default function Scheduler(props) {
   });
   const [events, setEvents] = useState([]);
   const [eventsFromFirestore, setEventsFromFirestore] = useState([]);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const {
+    isOpen: isLoginModalOpen,
+    onOpen: openLoginModal,
+    onOpenChange: onLoginModalChange,
+  } = useDisclosure();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -70,14 +74,20 @@ export default function Scheduler(props) {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (!user) {
+      openLoginModal();
+    }
+  }, [user, openLoginModal]);
+
   const handleAppointmentCreate = async () => {
     if (!date.dateTime || !date.selectedSize) {
       alert("Please pick an hour from the slot first.");
       return;
     }
 
-    const defaultTime = new Date(date.dateTime).setHours(24, 0, 0, 0); // Convert default time to milliseconds
-    const selectedTime = date.dateTime.getTime(); // Get selected time in milliseconds
+    const defaultTime = new Date(date.dateTime).setHours(24, 0, 0, 0);
+    const selectedTime = date.dateTime.getTime();
 
     if (selectedTime === defaultTime) {
       alert("you need to pick an hour from the slot");
@@ -278,10 +288,11 @@ export default function Scheduler(props) {
         </>
       ) : (
         <div className="flex justify-center">
-          <Button color="danger" variant="light" size="lg" onPress={onOpen}>
-            LOGIN WARNING
-          </Button>
-          <Modal isOpen={isOpen} onOpenChange={onOpenChange} className="dark">
+          <Modal
+            isOpen={isLoginModalOpen}
+            onOpenChange={onLoginModalChange}
+            className="dark"
+          >
             <ModalContent>
               {(onClose) => (
                 <>
