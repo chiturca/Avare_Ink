@@ -1,6 +1,6 @@
 import React from "react";
 import Scheduler from "../components/Calendar/Scheduler";
-import Card from '../components/ui/Card';
+import Card from "../components/ui/Card";
 import { SizeList } from "../helpers/SizeList";
 
 export default function Book() {
@@ -21,7 +21,8 @@ export default function Book() {
       </div>
       <p className="text-center">
         Your approximate duration of appointment will be calculated based on
-        your tattoo size. Please pick the option below the calendar based on your availablity.
+        your tattoo size. Please pick the option below the calendar based on
+        your availability.
         <br />
         For learning the exact price table, please contact me through +90 000
         000 0000

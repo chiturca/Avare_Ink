@@ -307,7 +307,7 @@ export default function Scheduler(props) {
                       Close
                     </Button>
                     <Link href="/login">
-                      <Button color="primary" name="Login" onPress={onClose}>
+                      <Button color="primary" name="Login">
                         Login
                       </Button>
                     </Link>
@@ -346,6 +346,7 @@ export default function Scheduler(props) {
                 alert("Please select a future date and time.");
                 return;
               }
+
               const selectedDuration =
                 date.selectedSize && tattooSizes[date.selectedSize]
                   ? tattooSizes[date.selectedSize].duration
