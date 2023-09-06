@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import { UserAuth } from "../api/AuthContext";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
@@ -12,6 +11,10 @@ const Login = () => {
 
   const handleSignIn = async () => {
     try {
+      if (recaptchaRef.current) {
+        recaptchaRef.current.execute();
+      }
+
       await googleSignIn();
     } catch (error) {
       console.log(error);
@@ -37,9 +40,11 @@ const Login = () => {
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={process.env.NEXT_PUBLIC_REACT_APP_RECAPTCHA_SITE_KEY}
+          size="invisible"
           onChange={(value) => {
             console.log("reCAPTCHA value:", value);
           }}
+          container="recaptcha-container"
         />
 
         <button
