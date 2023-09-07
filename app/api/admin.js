@@ -18,16 +18,15 @@ if (!admin.apps.length) {
   });
 }
 
-const handler = async (req, res) => {
-  const uid = "userUid";
-
-  try {
-    await admin.auth().setCustomUserClaims(uid, { isAdmin: true });
-    res.status(200).json({ message: "Custom claims set successfully" });
-  } catch (error) {
+const uid = "IIMZfiYTmVdjwJgPhDVXiEu4vZq2";
+admin
+  .auth()
+  .setCustomUserClaims(uid, { isAdmin: true })
+  .then(() => {
+    console.log("Custom claims set successfully");
+  })
+  .catch((error) => {
     console.error("Error setting custom claims:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-};
+  });
 
-export default handler;
+export default admin;
