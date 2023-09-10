@@ -1,9 +1,9 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
 import {
-  signInWithPopup,
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 
@@ -18,7 +18,11 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    signOut(auth);
+    signOut(auth)
+      .then(() => {
+        console.log("sign out successful");
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -34,7 +38,13 @@ export const AuthContextProvider = ({ children }) => {
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        googleSignIn,
+        logOut,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
