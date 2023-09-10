@@ -1,18 +1,14 @@
 "use client";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Logo from "../components/Logo";
 
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <Logo />
           <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-white">
             Sign in as admin
           </h2>
@@ -48,14 +44,6 @@ export default function Signin() {
                 >
                   Password
                 </label>
-                <div className="text-sm">
-                  <div
-                    onClick={() => router.push("/forgot-password")}
-                    className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300"
-                  >
-                    Forgot password?
-                  </div>
-                </div>
               </div>
               <div className="mt-2">
                 <input
