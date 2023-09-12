@@ -1,4 +1,4 @@
-import admin from "firebase-admin";
+const admin = require("firebase-admin");
 
 const serviceAccount = {
   type: process.env.FIREBASE_TYPE,
@@ -22,8 +22,8 @@ const uid = "IIMZfiYTmVdjwJgPhDVXiEu4vZq2";
 admin
   .auth()
   .setCustomUserClaims(uid, { isAdmin: true })
-  .then(() => {
-    console.log("Custom claims set successfully");
+  .then((token) => {
+    console.log("Custom claims set successfully:", token);
   })
   .catch((error) => {
     console.error("Error setting custom claims:", error);

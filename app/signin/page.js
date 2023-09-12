@@ -5,6 +5,33 @@ import { useState } from "react";
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSignIn = async () => {
+    try {
+      // Sign in the user using next-auth
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: true,
+        callbackUrl: "/admin",
+      });
+
+      // Check if the user is authenticated and isAdmin
+      if (result?.error) {
+        // Handle sign-in error
+        console.error("Error signing in:", result.error);
+      } else if (result?.ok && session?.data?.user?.claims?.isAdmin) {
+        // User is an admin
+        console.log("User is an admin");
+      } else {
+        // User is not an admin
+        console.log("not an admin");
+      }
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center">
@@ -60,14 +87,7 @@ export default function Signin() {
 
             <div>
               <button
-                onClick={() =>
-                  signIn("credentials", {
-                    email,
-                    password,
-                    redirect: true,
-                    callbackUrl: "/admin",
-                  })
-                }
+                onClick={handleSignIn}
                 disabled={!email || !password}
                 className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
