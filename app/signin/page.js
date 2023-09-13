@@ -8,25 +8,12 @@ export default function Signin() {
 
   const handleSignIn = async () => {
     try {
-      // Sign in the user using next-auth
-      const result = await signIn("credentials", {
+      await signIn("credentials", {
         email,
         password,
         redirect: true,
         callbackUrl: "/admin",
       });
-
-      // Check if the user is authenticated and isAdmin
-      if (result?.error) {
-        // Handle sign-in error
-        console.error("Error signing in:", result.error);
-      } else if (result?.ok && session?.data?.user?.claims?.isAdmin) {
-        // User is an admin
-        console.log("User is an admin");
-      } else {
-        // User is not an admin
-        console.log("not an admin");
-      }
     } catch (error) {
       console.error("Error signing in:", error);
     }

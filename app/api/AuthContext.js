@@ -5,16 +5,25 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const googleSignIn = () => {
+  const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    const { user: loggedInUser } = result;
+
+    if (loggedInUser) {
+      const userRef = doc(db, "users", loggedInUser.uid);
+      await setDoc(userRef, {
+        email: loggedInUser.email,
+      });
+    }
   };
 
   const logOut = () => {
