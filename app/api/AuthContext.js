@@ -22,7 +22,6 @@ export const AuthContextProvider = ({ children }) => {
       const userRef = doc(db, "users", loggedInUser.uid);
       await setDoc(userRef, {
         email: loggedInUser.email,
-        isAdmin: false,
       });
     }
   };
