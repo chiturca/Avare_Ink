@@ -18,16 +18,16 @@ const AdminDashboard = () => {
   //   console.log(idToken.claims);
   // };
   // a();
-  if (!isAdmin) {
-    return (
-      <>
-        <div>You are not authorized to access this page.</div>
-        <button className="text-white" onClick={() => signOut()}>
-          Logout
-        </button>
-      </>
-    );
-  }
+  // if (!isAdmin) {
+  //   return (
+  //     <>
+  //       <div>You are not authorized to access this page.</div>
+  //       <button className="text-white" onClick={() => signOut()}>
+  //         Logout
+  //       </button>
+  //     </>
+  //   );
+  // }
 
   return (
     <div className="p-8">
