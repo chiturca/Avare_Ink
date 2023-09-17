@@ -1,6 +1,6 @@
 import Image from "next/image";
 // import Avare from "../assets/avareink.svg";
-import logo from "../assets/logo2.png";
+import logo from "../../assets/logo2.png";
 
 export default function Logo() {
   return (
