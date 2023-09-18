@@ -32,7 +32,7 @@ export default function UserMenu() {
   return (
     <>
       {loading ? null : user ? (
-        <div className="m-10 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer">
+        <div className="mr-5 text-sky-200 text-2xl text-shadow-[0 0 50px #bae6fd] whitespace-nowrap cursor-pointer">
           <Dropdown placement="bottom-left" className="dark">
             <DropdownTrigger>
               <Image
@@ -70,9 +70,11 @@ export default function UserMenu() {
           </Dropdown>
         </div>
       ) : (
-        <Link href="/login">
-          <Button name="Login" />
-        </Link>
+        <div className="">
+          <Link href="/login">
+            <Button name="Login" />
+          </Link>
+        </div>
       )}
     </>
   );
