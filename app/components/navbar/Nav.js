@@ -46,33 +46,36 @@ export default function Nav() {
 
           {/* Mobile Navigation */}
           <div className="lg:hidden md:flex sm:flex flex-wrap flex-row justify-between items-center w-full p-8">
-            <Image
-              src={toggle ? close : menu}
-              alt="menu"
-              className="w-[28px] h-[28px] object-contain"
-              onClick={() => setToggle(!toggle)}
-            />
+            <div>
+              <Image
+                src={toggle ? close : menu}
+                alt="menu"
+                className="w-[28px] h-[28px] object-contain"
+                onClick={() => setToggle(!toggle)}
+              />
 
-            {/* Sidebar */}
-            <div
-              className={`${
-                !toggle ? "hidden" : "flex"
-              } p-6 absolute top-20 left-0 mx-4 my-2 min-w-[140px] sidebar border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl border bg-gray-200 drop-shadow-lg`}
-            >
-              <ul className="list-none flex justify-end items-start flex-1 flex-col">
-                {links.map((nav, index) => (
-                  <li
-                    key={nav.href}
-                    className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                      active === nav.name ? "text-sky-200" : "text-sky-500"
-                    } ${index === links.length - 1 ? "mb-0" : "mb-4"}`}
-                    onClick={() => setActive(nav.name)}
-                  >
-                    <Link href={nav.href}>{nav.name}</Link>
-                  </li>
-                ))}
-              </ul>
+              {/* Sidebar */}
+              <div
+                className={`${
+                  !toggle ? "hidden" : "flex"
+                } p-6 absolute top-20 left-0 mx-4 my-2 min-w-[140px] sidebar border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl border bg-gray-200 drop-shadow-lg`}
+              >
+                <ul className="list-none flex justify-end items-start flex-1 flex-col">
+                  {links.map((nav, index) => (
+                    <li
+                      key={nav.href}
+                      className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                        active === nav.name ? "text-sky-200" : "text-sky-500"
+                      } ${index === links.length - 1 ? "mb-0" : "mb-4"}`}
+                      onClick={() => setActive(nav.name)}
+                    >
+                      <Link href={nav.href}>{nav.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
+            <Logo />
             <UserMenu />
           </div>
         </nav>
