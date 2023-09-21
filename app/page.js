@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <div className="pt-32 pb-16 lg:pt-0 lg:pb-0 justify-center">
+    <div className="justify-center">
       <div>
         <Carousel {...fSettings} showThumbs={false}>
           <div>
@@ -65,7 +65,7 @@ export default function Home() {
         </Carousel>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left lg:pt-0">
+      <div className="grid text-center lg:grid-cols-4 lg:text-left lg:pt-0">
         {CardList.map((item, index) => {
           return (
             <Card
