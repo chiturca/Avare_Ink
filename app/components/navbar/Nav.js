@@ -19,7 +19,7 @@ export default function Nav() {
   return (
     <>
       <div className="flex sticky top-0 z-10 w-full justify-between font-mono text-sm dark">
-        <nav className="fixed left-0 top-0 flex w-full border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static rounded-xl border bg-gray-200 lg:p-4 drop-shadow-lg">
+        <nav className="static left-0 top-0 flex w-full border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl border bg-gray-200 p-4 drop-shadow-lg">
           <ul className="lg:flex flex-wrap flex-row justify-between items-center w-full hidden">
             <li>
               <Logo />
@@ -45,7 +45,7 @@ export default function Nav() {
           </ul>
 
           {/* Mobile Navigation */}
-          <div className="lg:hidden flex flex-wrap flex-row justify-between items-center w-full p-8">
+          <div className="lg:hidden flex flex-wrap flex-row justify-between items-center w-full p-4">
             <div>
               <Image
                 src={toggle ? close : menu}
