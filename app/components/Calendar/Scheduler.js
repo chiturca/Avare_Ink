@@ -210,7 +210,7 @@ export default function Scheduler(props) {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-max">
       {user ? (
         <>
           {date.justDate && (

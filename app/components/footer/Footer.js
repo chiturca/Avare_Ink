@@ -12,8 +12,8 @@ export const links = [
 export default function Footer() {
   const [active, setActive] = useState("");
   return (
-    <div className="sticky top-0 left-0 z-10 w-full justify-between font-mono text-sm dark">
-      <footer className="border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit static rounded-xl border bg-gray-200 lg:p-2 drop-shadow-lg m-4">
+    <div className="bottom-0 left-0 z-10 w-full justify-between font-mono text-sm dark">
+      <footer className="static border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit  rounded-xl border bg-gray-200 lg:p-2 drop-shadow-lg m-4">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center justify-between">
             <div className="flex flex-row">
