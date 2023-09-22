@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "./Logo";
@@ -14,7 +15,7 @@ export const links = [
   { href: "/book", name: "Book" },
 ];
 export default function Nav() {
-  const [active, setActive] = useState("Home");
+  const pathname = usePathname();
   const [toggle, setToggle] = useState(false);
   return (
     <>
@@ -29,12 +30,16 @@ export default function Nav() {
                 {links.map((link) => (
                   <li
                     key={link.href}
-                    onClick={() => setActive(link.name)}
-                    className={`m-7 text-2xl text-shadow-[0 0 50px #bae6fd] ${
-                      active === link.name ? "text-sky-200" : "text-sky-500"
-                    }`}
+                    className="m-7 text-2xl text-shadow-[0 0 50px #bae6fd]"
                   >
-                    <Link href={link.href}>{link.name}</Link>
+                    <Link
+                      className={
+                        pathname === link.href ? "text-sky-200" : "text-sky-500"
+                      }
+                      href={link.href}
+                    >
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -54,7 +59,6 @@ export default function Nav() {
                 onClick={() => setToggle(!toggle)}
               />
 
-              {/* Sidebar */}
               <div className="absolute z-10 font-mono text-sm dark">
                 <div
                   className={`${
@@ -66,11 +70,19 @@ export default function Nav() {
                       <li
                         key={nav.href}
                         className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                          active === nav.name ? "text-sky-200" : "text-sky-500"
-                        } ${index === links.length - 1 ? "mb-0" : "mb-4"}`}
-                        onClick={() => setActive(nav.name)}
+                          index === links.length - 1 ? "mb-0" : "mb-4"
+                        }`}
                       >
-                        <Link href={nav.href}>{nav.name}</Link>
+                        <Link
+                          className={
+                            pathname === nav.href
+                              ? "text-sky-200"
+                              : "text-sky-500"
+                          }
+                          href={nav.href}
+                        >
+                          {nav.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
