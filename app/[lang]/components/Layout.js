@@ -1,18 +1,18 @@
 "use client";
-import Nav from "./navbar/Nav";
-import { AuthContextProvider } from "../api/AuthContext";
 import { NextUIProvider } from "@nextui-org/react";
+import { AuthContextProvider } from "../api/AuthContext";
+import Nav from "./navbar/Nav";
 import Footer from "./footer/Footer";
 
-export default function Layout({ children }) {
+export default function Layout({ children, lang }) {
   return (
     <AuthContextProvider>
       <NextUIProvider>
-        <Nav />
+        <Nav lang={lang} />
         <main className="flex min-h-screen max-w-screen flex-col items-center justify-between p-16">
           <div className="dark">{children}</div>
         </main>
-        <Footer />
+        <Footer lang={lang} />
       </NextUIProvider>
     </AuthContextProvider>
   );
