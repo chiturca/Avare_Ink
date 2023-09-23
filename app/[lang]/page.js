@@ -1,15 +1,14 @@
-// "use client";
-// import { Carousel } from "react-responsive-carousel";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import Image from "next/image";
-// import { CardList } from "./helpers/CardList";
-// import Card from "./components/ui/Card";
-// import img from "./assets/img.jpg";
-import { getDictionary } from "./dictionaries";
+"use client";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Image from "next/image";
+import { CardList } from "./helpers/CardList";
+import Card from "./components/ui/Card";
+import img from "./assets/img.jpg";
+import { useTranslations } from "next-intl";
 
-export default async function Home({ params: { lang } }) {
-  const { page } = await getDictionary(lang);
-
+export default function Home() {
+  const t = useTranslations("Index");
   const fSettings = {
     dots: true,
     infinite: true,
@@ -47,9 +46,8 @@ export default async function Home({ params: { lang } }) {
 
   return (
     <div className="justify-center">
-      <h1 className="text-3xl font-bold">{page.home.title}</h1>
-      <p className="text-gray-500">{page.home.description}</p>
-      {/* <div>
+      <h1>{t("title")}</h1>
+      <div>
         <Carousel {...fSettings} showThumbs={false}>
           <div>
             <Image
@@ -69,7 +67,6 @@ export default async function Home({ params: { lang } }) {
           </div>
         </Carousel>
       </div>
-
       <div className="grid text-center lg:grid-cols-4 lg:text-left lg:pt-0">
         {CardList.map((item, index) => {
           return (
@@ -81,7 +78,7 @@ export default async function Home({ params: { lang } }) {
             />
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 }

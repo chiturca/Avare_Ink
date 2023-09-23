@@ -1,7 +1,13 @@
 {
+  "Index": {
+    "title": "Hello world!"
+  },
   "navigation": {
     "home": "Home",
-    "about": "About"
+    "design": "Design",
+    "aftercare": "Aftercare",
+    "contact": "Contact",
+    "book": "Book"
   },
   "page": {
     "home": {

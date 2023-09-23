@@ -1,4 +1,4 @@
-import { auth } from "@/firebase";
+import { auth } from "../../firebase";
 
 // Middleware function to set custom claim after successful authentication.
 export const setCustomClaimMiddleware = async (req, res, next) => {

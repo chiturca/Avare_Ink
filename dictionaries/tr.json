@@ -1,7 +1,13 @@
 {
+  "Index": {
+    "title": "Selams!"
+  },
   "navigation": {
     "home": "Ana Sayfa",
-    "about": "Hakkında"
+    "design": "Dizayn",
+    "aftercare": "Bakım",
+    "contact": "İletişim",
+    "book": "Rezervasyon"
   },
   "page": {
     "home": {

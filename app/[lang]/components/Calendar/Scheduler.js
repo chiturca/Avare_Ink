@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import Link from "next/link";
 import { UserAuth } from "../../api/AuthContext";
-import { db } from "@/firebase";
+import { db } from "../../../../firebase";
 import {
   Timestamp,
   addDoc,

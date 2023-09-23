@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "./Logo";
 import UserMenu from "./UserMenu";
+import LocaleSwitcher from "./LocaleSwitcher";
 import menu from "../../assets/menu.png";
 import close from "../../assets/close.png";
 
@@ -14,7 +15,7 @@ export const links = [
   { href: "/contact", name: "Contact" },
   { href: "/book", name: "Book" },
 ];
-export default function Nav() {
+export default function Nav({ lang }) {
   const pathname = usePathname();
   const [toggle, setToggle] = useState(false);
   return (
@@ -44,7 +45,9 @@ export default function Nav() {
                 ))}
               </ul>
             </li>
-            <li>
+            <li className="flex flex-col items-center">
+              <LocaleSwitcher />
+              <br />
               <UserMenu />
             </li>
           </ul>
