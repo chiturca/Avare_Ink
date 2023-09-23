@@ -1,5 +1,5 @@
 "use client";
-import { auth } from "@/firebase";
+import { auth } from "../../../firebase";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { setCustomClaimMiddleware } from "../middleware";

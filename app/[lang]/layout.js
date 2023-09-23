@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { i18n } from "@/i18n.config";
+import { i18n } from "../../i18n.config";
 import SessionProvider from "./SessionProvider";
 import Layout from "./components/Layout";
 import "./globals.css";
