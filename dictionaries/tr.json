@@ -1,0 +1,16 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "about": "Hakkında"
+  },
+  "page": {
+    "home": {
+      "title": "NextJs i18n'e Hoşgeldiniz",
+      "description": "NextJs 13 App router'da uluslararasılaştırma"
+    },
+    "about": {
+      "title": "Hakkımızda",
+      "description": "Bu sayfa hakkında sayfasıdır"
+    }
+  }
+}
