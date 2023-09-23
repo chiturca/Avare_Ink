@@ -1,12 +1,15 @@
-"use client";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Image from "next/image";
-import { CardList } from "./helpers/CardList";
-import Card from "./components/ui/Card";
-import img from "./assets/img.jpg";
+// "use client";
+// import { Carousel } from "react-responsive-carousel";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import Image from "next/image";
+// import { CardList } from "./helpers/CardList";
+// import Card from "./components/ui/Card";
+// import img from "./assets/img.jpg";
+import { getDictionary } from "./dictionaries";
 
-export default function Home() {
+export default async function Home({ params: { lang } }) {
+  const { page } = await getDictionary(lang);
+
   const fSettings = {
     dots: true,
     infinite: true,
@@ -44,7 +47,9 @@ export default function Home() {
 
   return (
     <div className="justify-center">
-      <div>
+      <h1 className="text-3xl font-bold">{page.home.title}</h1>
+      <p className="text-gray-500">{page.home.description}</p>
+      {/* <div>
         <Carousel {...fSettings} showThumbs={false}>
           <div>
             <Image
@@ -76,7 +81,7 @@ export default function Home() {
             />
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
