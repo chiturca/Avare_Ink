@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import Logo from "../navbar/Logo";
 
-export default function Footer() {
+export default function Footer({ lang }) {
   const t = useTranslations("footer");
   const pathname = usePathname();
 
@@ -31,7 +31,7 @@ export default function Footer() {
                     className={
                       pathname === link.href ? "text-sky-200" : "text-sky-500"
                     }
-                    href={link.href}
+                    href={`/${lang}${link.href}`}
                   >
                     {link.name}
                   </Link>
