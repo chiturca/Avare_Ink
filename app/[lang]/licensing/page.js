@@ -1,5 +1,6 @@
-import React from "react";
+import { getDictionary } from "../dictionaries";
 
-export default function Licensing() {
-  return <div>Licensing</div>;
+export default async function Licensing({ params: { lang } }) {
+  const { Licensing } = await getDictionary(lang);
+  return <div>{Licensing.title}</div>;
 }

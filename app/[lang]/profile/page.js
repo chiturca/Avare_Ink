@@ -1,5 +1,6 @@
-import React from "react";
+import { getDictionary } from "../dictionaries";
 
-export default function Profile() {
-  return <div>Profile</div>;
+export default async function Profile({ params: { lang } }) {
+  const { Profile } = await getDictionary(lang);
+  return <div>{Profile.title}</div>;
 }

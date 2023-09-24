@@ -1,5 +1,6 @@
-import React from "react";
+import { getDictionary } from "../dictionaries";
 
-export default function Aftercare() {
-  return <div>Bakım</div>;
+export default async function Aftercare({ params: { lang } }) {
+  const { Aftercare } = await getDictionary(lang);
+  return <div>{Aftercare.title}</div>;
 }

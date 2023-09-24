@@ -9,14 +9,65 @@
     "contact": "Contact",
     "book": "Book"
   },
-  "page": {
-    "home": {
-      "title": "Welcome to NextJs i18n",
-      "description": "Internationalization in NextJs 13 App router"
-    },
-    "about": {
-      "title": "About Us",
-      "description": "This is the about page"
-    }
+  "usermenu": {
+    "dropdownProfile": "Signed-in as",
+    "dropdownSettings": "My Settings",
+    "dropdownAnalytics": "Analytics",
+    "dropdownSystem": "System",
+    "dropdownConfigurations": "Configurations",
+    "dropdownHelp&Feedback": "Help & Feedback",
+    "dropdownLogout": "Sign Out",
+    "login": "Login"
+  },
+  "footer": {
+    "about": "About",
+    "privacypolicy": "Privacy Policy",
+    "licensing": "Licensing",
+    "contact": "Contact",
+    "reserved": "All Rights Reserved"
+  },
+  "About": {
+    "title": "About"
+  },
+  "Admin": {
+    "logout": "Logout"
+  },
+  "Adminsignin": {
+    "title": "Sign in as Admin",
+    "email": "Email address",
+    "password": "Password",
+    "button": "Sign in"
+  },
+  "Aftercare": {
+    "title": "Aftercare"
+  },
+  "Book": {
+    "h2": "What will be the size of your tattoo?",
+    "p1": "Your approximate duration of appointment will be calculated based on your tattoo size. Please pick the option below the calendar based on your availability.",
+    "p2": "For learning the exact price table, please contact us through +90 000000 0000"
+  },
+  "sizelist": {
+    "XSmall": "1x1 Maximum the size of a postage stamp or smaller (1 hour appointment)",
+    "Small": "2x2 Maximum about the size of a business card (2 hours appointment)",
+    "Medium": "4x4 Maximum about the size of your palm (4 hours appointment)",
+    "Large": "6x6 Maximum about the size of both hands placed together (6 hours appointment)"
+  },
+  "Contact": {
+    "directions": "Directions"
+  },
+  "Design": {
+    "title": "Design"
+  },
+  "Licensing": {
+    "title": "License"
+  },
+  "Login": {
+    "title": "SIGN IN WITH"
+  },
+  "PrivacyPolicy": {
+    "title": "Privacy Policy"
+  },
+  "Profile": {
+    "title": "Profile"
   }
 }

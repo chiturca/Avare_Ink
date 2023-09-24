@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { UserAuth } from "../../api/AuthContext";
 import { db } from "../../../../firebase";
 import {
@@ -14,11 +15,7 @@ import {
 import { add, format, parse, startOfWeek, getDay, startOfDay } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import tattooSizes, {
-  CLOSING_TIME,
-  INTERVAL,
-  OPENINING_TIME,
-} from "../../helpers/config";
+import tattooSizes, { CLOSING_TIME, INTERVAL, OPENINING_TIME } from "./config";
 import {
   Button,
   Popover,
@@ -32,6 +29,7 @@ import {
   PopoverTrigger,
 } from "@nextui-org/react";
 import "./Scheduler.css";
+import Card from "../ui/Card";
 
 function parseDuration(duration) {
   if (typeof duration !== "string") {
@@ -47,7 +45,8 @@ function parseDuration(duration) {
   }
 }
 
-export default function Scheduler(props) {
+export default function Scheduler() {
+  const t = useTranslations("sizelist");
   const { user } = UserAuth();
   const [date, setDate] = useState({
     justDate: null,
@@ -209,8 +208,43 @@ export default function Scheduler(props) {
     );
   }
 
+  const SizeList = [
+    {
+      href: "",
+      title: "XSmall:",
+      description: `${t("XSmall")}`,
+    },
+    {
+      href: "",
+      title: "Small:",
+      description: `${t("Small")}`,
+    },
+    {
+      href: "",
+      title: "Medium:",
+      description: `${t("Medium")}`,
+    },
+    {
+      href: "",
+      title: "Large: ",
+      description: `${t("Large")}`,
+    },
+  ];
+
   return (
     <div className="min-h-max">
+      <div className="grid text-center lg:grid-cols-4 lg:text-left lg:pt-0">
+        {SizeList.map((item, index) => {
+          return (
+            <Card
+              key={index}
+              href={item.href}
+              title={item.title}
+              description={item.description}
+            />
+          );
+        })}
+      </div>
       {user ? (
         <>
           {date.justDate && (

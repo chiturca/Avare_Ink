@@ -1,5 +1,6 @@
-import React from "react";
+import { getDictionary } from "../dictionaries";
 
-export default function PrivacyPolicy() {
-  return <div>PrivacyPolicy</div>;
+export default async function PrivacyPolicy({ params: { lang } }) {
+  const { PrivacyPolicy } = await getDictionary(lang);
+  return <div>{PrivacyPolicy.title}</div>;
 }
