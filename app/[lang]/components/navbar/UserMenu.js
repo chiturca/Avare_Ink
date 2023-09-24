@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   Dropdown,
   DropdownItem,
@@ -11,6 +12,7 @@ import { UserAuth } from "../../api/AuthContext";
 import Button from "../ui/Button";
 
 export default function UserMenu() {
+  const t = useTranslations("usermenu");
   const { user, logOut } = UserAuth();
   const [loading, setLoading] = useState(true);
 
@@ -46,25 +48,27 @@ export default function UserMenu() {
             <DropdownMenu color="primary" aria-label="Avatar Actions">
               <DropdownItem key="profile" css={{ height: "$18" }}>
                 <p b color="inherit" css={{ d: "flex" }}>
-                  Signed in as
+                  {t("dropdownProfile")}
                 </p>
                 <p b color="inherit" css={{ d: "flex" }}>
                   {user.email}
                 </p>
               </DropdownItem>
               <DropdownItem key="settings" withDivider>
-                My Settings
+                {t("dropdownSettings")}
               </DropdownItem>
               <DropdownItem key="analytics" withDivider>
-                Analytics
+                {t("dropdownAnalytics")}
               </DropdownItem>
-              <DropdownItem key="system">System</DropdownItem>
-              <DropdownItem key="configurations">Configurations</DropdownItem>
+              <DropdownItem key="system">{t("dropdownSystem")}</DropdownItem>
+              <DropdownItem key="configurations">
+                {t("dropdownConfigurations")}
+              </DropdownItem>
               <DropdownItem key="help_and_feedback" withDivider>
-                Help & Feedback
+                {t("dropdownHelp&Feedback")}
               </DropdownItem>
               <DropdownItem key="logout" color="error" withDivider>
-                <div onClick={handleSignOut}>Sign Out</div>
+                <div onClick={handleSignOut}>{t("dropdownLogout")}</div>
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
@@ -72,7 +76,7 @@ export default function UserMenu() {
       ) : (
         <div className="">
           <Link href="/login">
-            <Button name="Login" />
+            <Button name={t("login")} />
           </Link>
         </div>
       )}

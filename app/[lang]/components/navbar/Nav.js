@@ -2,22 +2,25 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import Logo from "./Logo";
 import UserMenu from "./UserMenu";
 import LocaleSwitcher from "./LocaleSwitcher";
 import menu from "../../assets/menu.png";
 import close from "../../assets/close.png";
 
-export const links = [
-  { href: "/", name: "Home" },
-  { href: "/design", name: "Design" },
-  { href: "/aftercare", name: "Aftercare" },
-  { href: "/contact", name: "Contact" },
-  { href: "/book", name: "Book" },
-];
-export default function Nav({ lang }) {
+export default function Nav() {
+  const t = useTranslations("navigation");
   const pathname = usePathname();
   const [toggle, setToggle] = useState(false);
+
+  const links = [
+    { href: "/", name: `${t("home")}` },
+    { href: "/design", name: `${t("design")}` },
+    { href: "/aftercare", name: `${t("aftercare")}` },
+    { href: "/contact", name: `${t("contact")}` },
+    { href: "/book", name: `${t("book")}` },
+  ];
   return (
     <>
       <div className="flex sticky top-0 z-10 w-full justify-between font-mono text-sm dark">

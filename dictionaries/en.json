@@ -9,14 +9,14 @@
     "contact": "Contact",
     "book": "Book"
   },
-  "page": {
-    "home": {
-      "title": "Welcome to NextJs i18n",
-      "description": "Internationalization in NextJs 13 App router"
-    },
-    "about": {
-      "title": "About Us",
-      "description": "This is the about page"
-    }
+  "usermenu": {
+    "dropdownProfile": "Signed-in as",
+    "dropdownSettings": "My Settings",
+    "dropdownAnalytics": "Analytics",
+    "dropdownSystem": "System",
+    "dropdownConfigurations": "Configurations",
+    "dropdownHelp&Feedback": "Help & Feedback",
+    "dropdownLogout": "Sign Out",
+    "login": "Login"
   }
 }

@@ -9,14 +9,14 @@
     "contact": "İletişim",
     "book": "Rezervasyon"
   },
-  "page": {
-    "home": {
-      "title": "NextJs i18n'e Hoşgeldiniz",
-      "description": "NextJs 13 App router'da uluslararasılaştırma"
-    },
-    "about": {
-      "title": "Hakkımızda",
-      "description": "Bu sayfa hakkında sayfasıdır"
-    }
+  "usermenu": {
+    "dropdownProfile": "Kullanıcı",
+    "dropdownSettings": "Ayarlarım",
+    "dropdownAnalytics": "Analitik",
+    "dropdownSystem": "Sistem",
+    "dropdownConfigurations": "Yapılandırma",
+    "dropdownHelp&Feedback": "Yardım & Geri Bildirim",
+    "dropdownLogout": "Çıkış",
+    "login": "Giriş Yap"
   }
 }
