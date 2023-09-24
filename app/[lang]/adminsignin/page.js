@@ -1,8 +1,10 @@
 "use client";
-import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 export default function Signin() {
+  const t = useTranslations("Adminsignin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +26,7 @@ export default function Signin() {
       <div className="flex min-h-full flex-1 flex-col justify-center">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-white">
-            Sign in as admin
+            {t("title")}
           </h2>
         </div>
 
@@ -35,7 +37,7 @@ export default function Signin() {
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-white"
               >
-                Email address
+                {t("email")}
               </label>
               <div className="mt-2">
                 <input
@@ -56,7 +58,7 @@ export default function Signin() {
                   htmlFor="password"
                   className="block text-sm font-medium leading-6 text-white"
                 >
-                  Password
+                  {t("password")}
                 </label>
               </div>
               <div className="mt-2">
@@ -78,7 +80,7 @@ export default function Signin() {
                 disabled={!email || !password}
                 className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
-                Sign in
+                {t("button")}
               </button>
             </div>
           </div>

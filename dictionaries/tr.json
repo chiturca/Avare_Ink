@@ -4,7 +4,7 @@
   },
   "navigation": {
     "home": "Ana Sayfa",
-    "design": "Dizayn",
+    "design": "Tasarımlar",
     "aftercare": "Bakım",
     "contact": "İletişim",
     "book": "Rezervasyon"
@@ -17,7 +17,7 @@
     "dropdownConfigurations": "Yapılandırma",
     "dropdownHelp&Feedback": "Yardım & Geri Bildirim",
     "dropdownLogout": "Çıkış",
-    "login": "Giriş Yap"
+    "login": "Giriş"
   },
   "footer": {
     "about": "Hakkında",
@@ -25,5 +25,49 @@
     "licensing": "Lisans",
     "contact": "Ulaşım",
     "reserved": "Tüm Hakları Saklıdır"
+  },
+  "About": {
+    "title": "Hakkında"
+  },
+  "Admin": {
+    "logout": "Çıkış Yap"
+  },
+  "Adminsignin": {
+    "title": "Admin Girişi",
+    "email": "Email adresi",
+    "password": "Şifre",
+    "button": "Giriş Yap"
+  },
+  "Aftercare": {
+    "title": "Bakım"
+  },
+  "Book": {
+    "h2": "Dövmenizin boyutunu seçiniz",
+    "p1": "Ortalama rezervasyon süreniz, seçtiğiniz dövme boyutuna göre hesaplanacaktır. Lütfen müsaitlik durumunuza göre aşağıdaki takvimden uygun seçenekleri seçiniz.",
+    "p2": "Tam fiyat tablosunu öğrenmek için lütfen +90 000000 0000 numaralı telefondan bize ulaşın."
+  },
+  "sizelist": {
+    "XSmall": "1x1 Maksimum posta pulu boyutunda veya daha küçük (1 saatlik randevu)",
+    "Small": "2x2 Maksimum kartvizit boyutunda (2 saatlik randevu)",
+    "Medium": "4x4 Maksimum avuç içi büyüklüğünde (4 saatlik randevu)",
+    "Large": "6x6 Maksimum iki elin toplam büyüklüğü kadar (6 saatlik randevu)"
+  },
+  "Contact": {
+    "directions": "Yol Tarifi"
+  },
+  "Design": {
+    "title": "Tasarımlar"
+  },
+  "Licensing": {
+    "title": "Lisans"
+  },
+  "Login": {
+    "title": "GİRİŞ YAP"
+  },
+  "PrivacyPolicy": {
+    "title": "Gizlilik Politikası"
+  },
+  "Profile": {
+    "title": "Profil"
   }
 }

@@ -1,33 +1,15 @@
-import React from "react";
 import Scheduler from "../components/Calendar/Scheduler";
-import Card from "../components/ui/Card";
-import { SizeList } from "../helpers/SizeList";
+import { getDictionary } from "../dictionaries";
 
-export default function Book() {
+export default async function Book({ params: { lang } }) {
+  const { Book } = await getDictionary(lang);
   return (
     <div className="min-h-screen">
-      <h2 className="text-center text-2xl mb-2">
-        What is the size of your tattoo?
-      </h2>
-      <div className="grid text-center lg:grid-cols-4 lg:text-left lg:pt-0">
-        {SizeList.map((item, index) => {
-          return (
-            <Card
-              key={index}
-              href={item.href}
-              title={item.title}
-              description={item.description}
-            />
-          );
-        })}
-      </div>
+      <h2 className="text-center text-3xl font-bold mb-2">{Book.h2}</h2>
       <p className="text-center mb-4">
-        Your approximate duration of appointment will be calculated based on
-        your tattoo size. Please pick the option below the calendar based on
-        your availability.
+        {Book.p1}
         <br />
-        For learning the exact price table, please contact me through +90 000
-        000 0000
+        {Book.p2}
       </p>
       <div className="mb-64">
         <Scheduler />

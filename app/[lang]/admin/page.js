@@ -1,14 +1,16 @@
 "use client";
-import { auth } from "../../../firebase";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { auth } from "../../../firebase";
 import { setCustomClaimMiddleware } from "../middleware";
 
 const AdminDashboard = () => {
+  const t = useTranslations("Admin");
   const session = useSession({
     required: true,
     onUnauthenticated() {
-      redirect("/signin");
+      redirect("/adminsignin");
     },
   });
 
@@ -52,7 +54,7 @@ const AdminDashboard = () => {
     <div className="p-8">
       <div className="text-white">{session?.data?.user?.email}</div>
       <button className="text-white" onClick={() => signOut()}>
-        Logout
+        {t("logout")}
       </button>
     </div>
   );
