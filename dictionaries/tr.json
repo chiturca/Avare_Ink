@@ -18,5 +18,12 @@
     "dropdownHelp&Feedback": "Yardım & Geri Bildirim",
     "dropdownLogout": "Çıkış",
     "login": "Giriş Yap"
+  },
+  "footer": {
+    "about": "Hakkında",
+    "privacypolicy": "Gizlilik Politikası",
+    "licensing": "Lisans",
+    "contact": "Ulaşım",
+    "reserved": "Tüm Hakları Saklıdır"
   }
 }

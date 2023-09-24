@@ -18,5 +18,12 @@
     "dropdownHelp&Feedback": "Help & Feedback",
     "dropdownLogout": "Sign Out",
     "login": "Login"
+  },
+  "footer": {
+    "about": "About",
+    "privacypolicy": "Privacy Policy",
+    "licensing": "Licensing",
+    "contact": "Contact",
+    "reserved": "All Rights Reserved"
   }
 }

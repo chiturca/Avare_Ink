@@ -1,16 +1,18 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import Logo from "../navbar/Logo";
 
-export const links = [
-  { href: "/about", name: "About" },
-  { href: "/privacypolicy", name: "Privacy Policy" },
-  { href: "/licensing", name: "Licensing" },
-  { href: "/contact", name: "Contact" },
-];
-
 export default function Footer() {
+  const t = useTranslations("footer");
   const pathname = usePathname();
+
+  const links = [
+    { href: "/about", name: `${t("about")}` },
+    { href: "/privacypolicy", name: `${t("privacypolicy")}` },
+    { href: "/licensing", name: `${t("licensing")}` },
+    { href: "/contact", name: `${t("contact")}` },
+  ];
   return (
     <div className="bottom-0 left-0 z-10 w-full justify-between font-mono text-sm dark">
       <footer className="static border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit  rounded-xl border bg-gray-200 lg:p-2 drop-shadow-lg m-4">
@@ -43,7 +45,7 @@ export default function Footer() {
             <a href="https://avare-ink.vercel.app/" className="hover:underline">
               Avare Ink™
             </a>
-            . All Rights Reserved.
+            . {t("reserved")}.
           </span>
         </div>
       </footer>
