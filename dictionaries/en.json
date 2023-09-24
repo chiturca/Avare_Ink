@@ -52,6 +52,12 @@
     "Medium": "4x4 Maximum about the size of your palm (4 hours appointment)",
     "Large": "6x6 Maximum about the size of both hands placed together (6 hours appointment)"
   },
+  "modal":{
+    "ModalHeader": "Warning",
+    "ModalBody": "For creating an appointment, please login with google",
+    "Close": "Close",
+    "Login": "Login"
+  },
   "Contact": {
     "directions": "Directions"
   },

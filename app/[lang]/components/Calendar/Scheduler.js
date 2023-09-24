@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { UserAuth } from "../../api/AuthContext";
 import { db } from "../../../../firebase";
@@ -16,20 +15,10 @@ import { add, format, parse, startOfWeek, getDay, startOfDay } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import tattooSizes, { CLOSING_TIME, INTERVAL, OPENINING_TIME } from "./config";
-import {
-  Button,
-  Popover,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  useDisclosure,
-  PopoverContent,
-  PopoverTrigger,
-} from "@nextui-org/react";
+import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 import "./Scheduler.css";
 import Card from "../ui/Card";
+import CModal from "./CModal";
 
 function parseDuration(duration) {
   if (typeof duration !== "string") {
@@ -55,11 +44,6 @@ export default function Scheduler() {
   });
   const [events, setEvents] = useState([]);
   const [eventsFromFirestore, setEventsFromFirestore] = useState([]);
-  const {
-    isOpen: isLoginModalOpen,
-    onOpen: openLoginModal,
-    onOpenChange: onLoginModalChange,
-  } = useDisclosure();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -72,12 +56,6 @@ export default function Scheduler() {
 
     return () => unsubscribe();
   }, []);
-
-  useEffect(() => {
-    if (!user) {
-      openLoginModal();
-    }
-  }, [user, openLoginModal]);
 
   const handleAppointmentCreate = async () => {
     if (!date.dateTime || !date.selectedSize) {
@@ -321,36 +299,7 @@ export default function Scheduler() {
           <br />
         </>
       ) : (
-        <div className="flex justify-center">
-          <Modal
-            isOpen={isLoginModalOpen}
-            onOpenChange={onLoginModalChange}
-            className="dark"
-          >
-            <ModalContent>
-              {(onClose) => (
-                <>
-                  <ModalHeader className="flex flex-col gap-1">
-                    Warning
-                  </ModalHeader>
-                  <ModalBody>
-                    <p>For creating an appointment, please login with google</p>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="danger" variant="light" onPress={onClose}>
-                      Close
-                    </Button>
-                    <Link href="/login">
-                      <Button color="primary" name="Login">
-                        Login
-                      </Button>
-                    </Link>
-                  </ModalFooter>
-                </>
-              )}
-            </ModalContent>
-          </Modal>
-        </div>
+        <CModal />
       )}
 
       <div className="h-48">
