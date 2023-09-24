@@ -9,7 +9,7 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import menu from "../../assets/menu.png";
 import close from "../../assets/close.png";
 
-export default function Nav() {
+export default function Nav({ lang }) {
   const t = useTranslations("navigation");
   const pathname = usePathname();
   const [toggle, setToggle] = useState(false);
@@ -40,7 +40,7 @@ export default function Nav() {
                       className={
                         pathname === link.href ? "text-sky-200" : "text-sky-500"
                       }
-                      href={link.href}
+                      href={`/${lang}${link.href}`}
                     >
                       {link.name}
                     </Link>
@@ -85,7 +85,7 @@ export default function Nav() {
                               ? "text-sky-200"
                               : "text-sky-500"
                           }
-                          href={nav.href}
+                          href={`/${lang}${nav.href}`}
                         >
                           {nav.name}
                         </Link>
@@ -96,7 +96,11 @@ export default function Nav() {
               </div>
             </div>
             <Logo />
-            <UserMenu />
+            <div className="flex flex-col items-center">
+              <LocaleSwitcher />
+              <br />
+              <UserMenu />
+            </div>
           </div>
         </nav>
       </div>
