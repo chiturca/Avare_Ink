@@ -9,7 +9,7 @@ export default function Layout({ children, lang }) {
     <AuthContextProvider>
       <NextUIProvider>
         <Nav lang={lang} />
-        <main className="flex min-h-screen max-w-screen flex-col items-center justify-between p-16">
+        <main className="flex min-h-screen max-w-screen flex-col items-center justify-between px-16 py-8">
           <div className="dark">{children}</div>
         </main>
         <Footer lang={lang} />
