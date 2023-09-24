@@ -52,6 +52,12 @@
     "Medium": "4x4 Maksimum avuç içi büyüklüğünde (4 saatlik randevu)",
     "Large": "6x6 Maksimum iki elin toplam büyüklüğü kadar (6 saatlik randevu)"
   },
+  "modal": {
+    "ModalHeader": "Uyarı",
+    "ModalBody": "Randevu oluşturmak için lütfen google ile giriş yapın",
+    "Close": "Kapat",
+    "Login": "Giriş"
+  },
   "Contact": {
     "directions": "Yol Tarifi"
   },
