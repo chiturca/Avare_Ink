@@ -1,11 +1,12 @@
 import Scheduler from "../components/Calendar/Scheduler";
+import H1 from "../components/ui/H1";
 import { getDictionary } from "../dictionaries";
 
 export default async function Book({ params: { lang } }) {
   const { Book } = await getDictionary(lang);
   return (
     <div className="min-h-screen">
-      <h2 className="text-center text-3xl font-bold mb-2">{Book.h2}</h2>
+      <H1 name={Book.h2} />
       <p className="text-center mb-4">
         {Book.p1}
         <br />
