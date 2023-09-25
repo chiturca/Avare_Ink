@@ -29,7 +29,11 @@ export default function Footer({ lang }) {
                 <li key={link.href} className="mr-4 hover:underline md:mr-6">
                   <Link
                     className={
-                      pathname === link.href ? "text-sky-200" : "text-sky-500"
+                      (pathname === `/${lang}` || pathname === "/") && link.href === "/"
+                          ? "text-sky-200"
+                          : pathname === `/${lang}${link.href}`
+                          ? "text-sky-200"
+                          : "text-sky-500"
                     }
                     href={`/${lang}${link.href}`}
                   >
