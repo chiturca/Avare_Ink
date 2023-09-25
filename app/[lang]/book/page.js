@@ -11,7 +11,7 @@ export default async function Book({ params: { lang } }) {
         <br />
         {Book.p2}
       </p>
-      <div className="mb-64">
+      <div className="min-h-screen">
         <Scheduler />
       </div>
     </div>
