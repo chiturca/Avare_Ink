@@ -21,6 +21,7 @@ export default function Nav({ lang }) {
     { href: "/contact", name: `${t("contact")}` },
     { href: "/book", name: `${t("book")}` },
   ];
+  console.log(pathname);
   return (
     <>
       <div className="flex sticky top-0 z-10 w-full justify-between font-mono text-sm dark">
@@ -37,8 +38,12 @@ export default function Nav({ lang }) {
                     className="m-7 text-2xl text-shadow-[0 0 50px #bae6fd]"
                   >
                     <Link
-                      className={
-                        pathname === link.href ? "text-sky-200" : "text-sky-500"
+                      className={ 
+                        (pathname === `/${lang}` || pathname === "/") && link.href === "/"
+                          ? "text-sky-200"
+                          : pathname === `/${lang}${link.href}`
+                          ? "text-sky-200"
+                          : "text-sky-500"
                       }
                       href={`/${lang}${link.href}`}
                     >
@@ -80,8 +85,10 @@ export default function Nav({ lang }) {
                         }`}
                       >
                         <Link
-                          className={
-                            pathname === nav.href
+                          className={ 
+                            (pathname === `/${lang}` || pathname === "/") && nav.href === "/"
+                              ? "text-sky-200"
+                              : pathname === `/${lang}${nav.href}`
                               ? "text-sky-200"
                               : "text-sky-500"
                           }
