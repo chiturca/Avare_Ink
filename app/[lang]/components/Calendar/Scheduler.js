@@ -302,9 +302,9 @@ export default function Scheduler() {
         <CModal />
       )}
 
-      <div className="h-48">
+      <div className="static h-min mt-4">
         <Calendar
-          className="dark"
+          className="dark h-screen"
           localizer={localizer}
           events={[
             ...events.map((event) => ({
