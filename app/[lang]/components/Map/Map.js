@@ -8,8 +8,8 @@ import {
 } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "70em",
-  height: "25em",
+  width: "30em",
+  height: "30em",
 };
 
 const center = {
@@ -52,10 +52,9 @@ function Map() {
     strokeWeight: 0,
     rotation: 0,
     scale: 2,
-    // anchor: new google.maps.Point(0, 20),
   };
   return isLoaded ? (
-    <div className="min-w-max">
+    <div className="">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
