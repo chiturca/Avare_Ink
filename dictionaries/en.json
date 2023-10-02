@@ -42,17 +42,18 @@
     "title": "Aftercare"
   },
   "Book": {
-    "h2": "What will be the size of your tattoo?",
-    "p1": "Your approximate duration of appointment will be calculated based on your tattoo size. Please pick the option below the calendar based on your availability.",
+    "h2": "Please select your tattoo details",
+    "p1": "After selecting an available day on the calendar based on your availability, your approximate duration of appointment will be calculated based on your tattoo size.",
     "p2": "For learning the exact price table, please contact us through +90 000000 0000"
   },
   "sizelist": {
     "XSmall": "1x1 Maximum the size of a postage stamp or smaller (1 hour appointment)",
     "Small": "2x2 Maximum about the size of a business card (2 hours appointment)",
     "Medium": "4x4 Maximum about the size of your palm (4 hours appointment)",
-    "Large": "6x6 Maximum about the size of both hands placed together (6 hours appointment)"
+    "Large": "6x6 Maximum about the size of both hands placed together (6 hours appointment)",
+    "XLarge": "8x8+ Half sleeves and larger (8+ hours appointment)"
   },
-  "modal":{
+  "modal": {
     "ModalHeader": "Warning",
     "ModalBody": "For creating an appointment, please login with google",
     "Close": "Close",
