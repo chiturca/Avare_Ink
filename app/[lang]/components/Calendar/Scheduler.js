@@ -14,7 +14,7 @@ import {
 import { add, format, parse, startOfWeek, getDay, startOfDay } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import tattooSizes, { CLOSING_TIME, INTERVAL, OPENINING_TIME } from "./config";
+import { CLOSING_TIME, INTERVAL, OPENINING_TIME } from "./config";
 import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 import "./Scheduler.css";
 import Card from "../ui/Card";
@@ -44,6 +44,26 @@ export default function Scheduler() {
   });
   const [events, setEvents] = useState([]);
   const [eventsFromFirestore, setEventsFromFirestore] = useState([]);
+
+  const tattooSizes = {
+    xsmall: {
+      size: "XSmall",
+      duration: "1 hour",
+      description: `${t("XSmall")}`,
+    },
+    small: { size: "Small", duration: "2 hours", description: `${t("Small")}` },
+    medium: {
+      size: "Medium",
+      duration: "4 hours",
+      description: `${t("Medium")}`,
+    },
+    large: { size: "Large", duration: "6 hours", description: `${t("Large")}` },
+    extraLarge: {
+      size: "XLarge+",
+      duration: "8 hours",
+      description: `${t("XLarge")}`,
+    },
+  };
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -186,61 +206,33 @@ export default function Scheduler() {
     );
   }
 
-  const SizeList = [
-    {
-      href: "",
-      title: "XSmall:",
-      description: `${t("XSmall")}`,
-    },
-    {
-      href: "",
-      title: "Small:",
-      description: `${t("Small")}`,
-    },
-    {
-      href: "",
-      title: "Medium:",
-      description: `${t("Medium")}`,
-    },
-    {
-      href: "",
-      title: "Large: ",
-      description: `${t("Large")}`,
-    },
-  ];
+  const handleSizeSelect = (selectedSize) => {
+    setDate((prev) => ({ ...prev, selectedSize }));
+  };
 
   return (
     <div className="min-h-max">
-      <div className="grid text-center lg:grid-cols-4 lg:text-left lg:pt-0">
-        {SizeList.map((item, index) => {
-          return (
-            <Card
-              key={index}
-              href={item.href}
-              title={item.title}
-              description={item.description}
-            />
-          );
-        })}
-      </div>
       {user ? (
         <>
           {date.justDate && (
             <div>
               <p>Selected Date: {format(date.justDate, "MMMM d, yyyy")}</p>
-              <select
-                className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
-                onChange={(e) =>
-                  setDate((prev) => ({ ...prev, selectedSize: e.target.value }))
-                }
-              >
-                <option value="">Select Tattoo Size</option>
+              <p>Select Tattoo Size:</p>
+                <div className="grid text-center lg:flex lg:flex-wrap lg:justify-center lg:text-left lg:pt-0">
                 {Object.keys(tattooSizes).map((size) => (
-                  <option key={size} value={size}>
-                    {tattooSizes[size].size}
-                  </option>
+                  <Card
+                    key={size}
+                    title={tattooSizes[size].size}
+                    description={tattooSizes[size].description}
+                    onClick={() => handleSizeSelect(size)}
+                    className={
+                      size === date.selectedSize
+                        ? "text-cyan-500"
+                        : ""
+                    }
+                  />
                 ))}
-              </select>
+                </div>
               {date.selectedSize && (
                 <>
                   <p>Selected Size: {tattooSizes[date.selectedSize]?.size}</p>
