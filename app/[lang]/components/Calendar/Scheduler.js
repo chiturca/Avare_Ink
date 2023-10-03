@@ -44,6 +44,7 @@ export default function Scheduler() {
   });
   const [events, setEvents] = useState([]);
   const [eventsFromFirestore, setEventsFromFirestore] = useState([]);
+  const [selectedTime, setSelectedTime] = useState(null);
 
   const tattooSizes = {
     xsmall: {
@@ -216,9 +217,7 @@ export default function Scheduler() {
         <>
           {date.justDate && (
             <div>
-              <p>Selected Date: {format(date.justDate, "MMMM d, yyyy")}</p>
-              <p>Select Tattoo Size:</p>
-                <div className="grid text-center lg:flex lg:flex-wrap lg:justify-center lg:text-left lg:pt-0">
+              <div className="grid text-center lg:flex lg:flex-wrap lg:justify-center lg:text-left lg:pt-0">
                 {Object.keys(tattooSizes).map((size) => (
                   <Card
                     key={size}
@@ -226,17 +225,13 @@ export default function Scheduler() {
                     description={tattooSizes[size].description}
                     onClick={() => handleSizeSelect(size)}
                     className={
-                      size === date.selectedSize
-                        ? "text-cyan-500"
-                        : ""
+                      size === date.selectedSize ? "text-cyan-500" : ""
                     }
                   />
                 ))}
-                </div>
+              </div>
               {date.selectedSize && (
                 <>
-                  <p>Selected Size: {tattooSizes[date.selectedSize]?.size}</p>
-                  <p>Duration: {tattooSizes[date.selectedSize].duration}</p>
                   <Popover placement="bottom" showArrow={true}>
                     <PopoverTrigger>
                       <button className="p-2 px-3 m-5 rounded-md text-cyan-200 bg-gray-900">
@@ -249,9 +244,10 @@ export default function Scheduler() {
                           <button
                             className="p-1 px-2  hover:text-sky-200 hover:shadow-lg hover:scale-110"
                             type="button"
-                            onClick={() =>
-                              setDate((prev) => ({ ...prev, dateTime: time }))
-                            }
+                            onClick={() => {
+                              setSelectedTime(time);
+                              setDate((prev) => ({ ...prev, dateTime: time }));
+                            }}
                           >
                             {format(time, "kk:mm")}
                           </button>
@@ -259,13 +255,12 @@ export default function Scheduler() {
                       ))}
                     </PopoverContent>
                   </Popover>
-                  {date.dateTime && (
+                  {selectedTime && (
                     <>
-                      <p>Selected Time: {format(date.dateTime, "kk:mm")}</p>
                       <button
                         onClick={handleAppointmentCreate}
                         className="p-2 m-5 rounded-md text-cyan-200 bg-gray-900"
-                        disabled={!date.dateTime}
+                        disabled={!selectedTime}
                       >
                         Create Appointment
                       </button>

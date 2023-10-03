@@ -10,3 +10,9 @@
   border: 1px solid white;
   border-radius: 5px;
 }
+button{
+  color: #64ace3 !important;
+}
+.rbc-active {
+  border-color: #64ace3 !important;
+}
