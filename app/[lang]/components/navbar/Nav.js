@@ -21,7 +21,6 @@ export default function Nav({ lang }) {
     { href: "/contact", name: `${t("contact")}` },
     { href: "/book", name: `${t("book")}` },
   ];
-  console.log(pathname);
   return (
     <>
       <div className="flex sticky top-0 z-10 w-full justify-between font-mono text-sm dark">
