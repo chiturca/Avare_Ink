@@ -11,7 +11,7 @@
   },
   "usermenu": {
     "dropdownProfile": "Signed-in as",
-    "dropdownSettings": "My Settings",
+    "dropdownSettings": "My Profile",
     "dropdownAnalytics": "Analytics",
     "dropdownSystem": "System",
     "dropdownConfigurations": "Configurations",
