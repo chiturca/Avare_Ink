@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
 import img from "../../assets/img.jpg";
 
-export default function Slider() {
+export default function ProfileSlider() {
   const Settings = {
     autoPlay: true,
     interval: 10000,

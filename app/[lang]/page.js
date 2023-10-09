@@ -1,6 +1,6 @@
 import { CardList } from "./helpers/CardList";
 import Card from "./components/ui/Card";
-import Slider from "./components/Slider";
+import Slider from "./components/Slider/HomeSlider";
 
 export default function Home() {
   return (
