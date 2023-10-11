@@ -11,7 +11,7 @@ import {
 import { UserAuth } from "../../api/AuthContext";
 import Button from "../ui/Button";
 
-export default function UserMenu() {
+export default function UserMenu({ lang }) {
   const t = useTranslations("usermenu");
   const { user, logOut } = UserAuth();
   const [loading, setLoading] = useState(true);
@@ -38,7 +38,7 @@ export default function UserMenu() {
           <Dropdown placement="bottom-left" className="dark">
             <DropdownTrigger>
               <Image
-                className="m-auto h-16 w-16 rounded-full border-2 border-sky-200"
+                className="m-auto h-16 w-16 rounded-full border-2 border-sky-200 shadow-md ease-in duration-300 hover:border-sky-900 hover:shadow-lg hover:scale-110"
                 src={user.photoURL}
                 alt="UserAvatar"
                 width={50}
@@ -46,28 +46,41 @@ export default function UserMenu() {
               />
             </DropdownTrigger>
             <DropdownMenu color="primary" aria-label="Avatar Actions">
-              <DropdownItem key="profile" css={{ height: "$18" }}>
-                <p b color="inherit" css={{ d: "flex" }}>
+              <DropdownItem
+                key="profile"
+                className="cursor-default text-gray-400"
+                color="error"
+                css={{ height: "$18" }}
+                textValue={t("dropdownProfile")}
+              >
+                <p b="inherit" color="inherit" css={{ d: "flex" }}>
                   {t("dropdownProfile")}
                 </p>
-                <p b color="inherit" css={{ d: "flex" }}>
+                <p b="inherit" color="inherit" css={{ d: "flex" }}>
                   {user.email}
                 </p>
               </DropdownItem>
-              <DropdownItem key="settings" withDivider>
-                {t("dropdownSettings")}
+              <DropdownItem
+                key="settings"
+                textValue={t("dropdownSettings")}
+                withDivider
+              >
+                <Link href={`/${lang}/profile`}>{t("dropdownSettings")}</Link>
               </DropdownItem>
-              <DropdownItem key="analytics" withDivider>
-                {t("dropdownAnalytics")}
-              </DropdownItem>
-              <DropdownItem key="system">{t("dropdownSystem")}</DropdownItem>
-              <DropdownItem key="configurations">
-                {t("dropdownConfigurations")}
-              </DropdownItem>
-              <DropdownItem key="help_and_feedback" withDivider>
+              <DropdownItem
+                key="help_and_feedback"
+                textValue={t("dropdownHelp&Feedback")}
+                withDivider
+              >
                 {t("dropdownHelp&Feedback")}
               </DropdownItem>
-              <DropdownItem key="logout" color="error" withDivider>
+              <DropdownItem
+                key="logout"
+                className="text-danger"
+                color="danger"
+                textValue={t("dropdownLogout")}
+                withDivider
+              >
                 <div onClick={handleSignOut}>{t("dropdownLogout")}</div>
               </DropdownItem>
             </DropdownMenu>

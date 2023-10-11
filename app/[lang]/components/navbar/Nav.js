@@ -37,8 +37,9 @@ export default function Nav({ lang }) {
                     className="m-7 text-2xl text-shadow-[0 0 50px #bae6fd]"
                   >
                     <Link
-                      className={ 
-                        (pathname === `/${lang}` || pathname === "/") && link.href === "/"
+                      className={
+                        (pathname === `/${lang}` || pathname === "/") &&
+                        link.href === "/"
                           ? "text-sky-200"
                           : pathname === `/${lang}${link.href}`
                           ? "text-sky-200"
@@ -55,7 +56,7 @@ export default function Nav({ lang }) {
             <li className="flex flex-col items-center">
               <LocaleSwitcher />
               <br />
-              <UserMenu />
+              <UserMenu lang={lang} />
             </li>
           </ul>
 
@@ -84,8 +85,9 @@ export default function Nav({ lang }) {
                         }`}
                       >
                         <Link
-                          className={ 
-                            (pathname === `/${lang}` || pathname === "/") && nav.href === "/"
+                          className={
+                            (pathname === `/${lang}` || pathname === "/") &&
+                            nav.href === "/"
                               ? "text-sky-200"
                               : pathname === `/${lang}${nav.href}`
                               ? "text-sky-200"
