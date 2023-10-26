@@ -67,7 +67,7 @@ export default function HomeSlider() {
   };
 
   return (
-    <div>
+    <div className="max-h-min">
       <input
         type="file"
         onChange={(event) => {
@@ -78,13 +78,23 @@ export default function HomeSlider() {
       <Carousel {...Settings} showThumbs={false}>
         {imageList.map((url) => {
           return (
-            <div key={url}>
+            <div
+              key={url}
+              className="selected"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                maxHeight: "40em",
+              }}
+            >
               <Image
                 className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] w-full"
                 src={url}
                 alt={v4()}
-                width={300}
-                height={300}
+                width={800}
+                height={800}
+                objectFit="cover"
               />
             </div>
           );
