@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { storage } from "../../../../firebase";
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
+import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Image from "next/image";
 
 export default function HomeSlider() {
   const [imageUpload, setImageUpload] = useState(null);
@@ -30,6 +31,7 @@ export default function HomeSlider() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const { data: session } = useSession();
   const Settings = {
     autoPlay: true,
     interval: 10000,
@@ -68,13 +70,20 @@ export default function HomeSlider() {
 
   return (
     <div className="max-h-min">
-      <input
-        type="file"
-        onChange={(event) => {
-          setImageUpload(event.target.files[0]);
-        }}
-      />
-      <button onClick={uploadImage}>Upload</button>
+      {session && session.user && session.user.role === "admin" ? (
+        <>
+          <input
+            type="file"
+            onChange={(event) => {
+              setImageUpload(event.target.files[0]);
+            }}
+          />
+          <button onClick={uploadImage}>Upload</button>
+        </>
+      ) : (
+        ""
+      )}
+
       <Carousel {...Settings} showThumbs={false}>
         {imageList.map((url) => {
           return (
