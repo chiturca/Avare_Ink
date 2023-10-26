@@ -1,10 +1,35 @@
 "use client";
+import { useEffect, useState } from "react";
+import { storage } from "../../../../firebase";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
-import img from "../../assets/img.jpg";
 
 export default function HomeSlider() {
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageList, setImageList] = useState([]);
+  const uploadImage = () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `homeImages/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageList((prev) => [...prev, url]);
+      });
+    });
+  };
+  const imgeListRef = ref(storage, "homeImages/");
+  useEffect(() => {
+    listAll(imgeListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageList((prev) => [...prev, url]);
+        });
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const Settings = {
     autoPlay: true,
     interval: 10000,
@@ -41,35 +66,26 @@ export default function HomeSlider() {
     ],
   };
 
-  const PhotoList = [
-    {
-      src: img,
-      legend: "Legend 1",
-      alt: "alt1",
-    },
-    {
-      src: img,
-      legend: "Legend 2",
-      alt: "alt2",
-    },
-    {
-      src: img,
-      legend: "Legend 3",
-      alt: "alt3",
-    },
-  ];
   return (
     <div>
+      <input
+        type="file"
+        onChange={(event) => {
+          setImageUpload(event.target.files[0]);
+        }}
+      />
+      <button onClick={uploadImage}>Upload</button>
       <Carousel {...Settings} showThumbs={false}>
-        {PhotoList.map((item, index) => {
+        {imageList.map((url) => {
           return (
-            <div key={index}>
+            <div key={url}>
               <Image
                 className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] w-full"
-                src={item.src}
-                alt={item.alt}
+                src={url}
+                alt={v4()}
+                width={300}
+                height={300}
               />
-              <p className="legend">{item.legend}</p>
             </div>
           );
         })}

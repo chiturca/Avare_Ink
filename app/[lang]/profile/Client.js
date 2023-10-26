@@ -1,7 +1,7 @@
 "use client";
 import { UserAuth } from "../api/AuthContext";
 import ProfileSlider from "../components/Slider/ProfileSlider";
-import img from "../assets/img.jpg";
+import img from "../assets/avareink.svg";
 import Image from "next/image";
 
 export default function Client() {
