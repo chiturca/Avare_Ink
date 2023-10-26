@@ -2,7 +2,7 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
-import img from "../../assets/img.jpg";
+import img from "../../assets/avareink.svg";
 
 export default function ProfileSlider() {
   const Settings = {
