@@ -2,6 +2,7 @@
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const AdminDashboard = () => {
   const t = useTranslations("Admin");
@@ -19,6 +20,10 @@ const AdminDashboard = () => {
       <button className="text-white" onClick={() => signOut()}>
         {t("logout")}
       </button>
+      <br />
+      {session?.data?.user?.role === "admin" && (
+        <Link href="/">Upload Images</Link>
+      )}
     </div>
   );
 };
