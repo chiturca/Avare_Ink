@@ -2,7 +2,13 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { storage } from "../../../../firebase";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  listAll,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import { v4 } from "uuid";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
@@ -11,6 +17,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default function HomeSlider() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageList, setImageList] = useState([]);
+  const { data: session } = useSession();
+
   const uploadImage = () => {
     if (imageUpload == null) return;
     const imageRef = ref(storage, `homeImages/${imageUpload.name + v4()}`);
@@ -20,6 +28,7 @@ export default function HomeSlider() {
       });
     });
   };
+
   const imgeListRef = ref(storage, "homeImages/");
   useEffect(() => {
     listAll(imgeListRef).then((response) => {
@@ -31,7 +40,18 @@ export default function HomeSlider() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const { data: session } = useSession();
+
+  const deleteImage = (url) => {
+    const imageRef = ref(storage, url);
+    deleteObject(imageRef)
+      .then(() => {
+        setImageList((prev) => prev.filter((imgUrl) => imgUrl !== url));
+      })
+      .catch((error) => {
+        console.error("Error deleting image:", error);
+      });
+  };
+
   const Settings = {
     autoPlay: true,
     interval: 10000,
@@ -103,8 +123,13 @@ export default function HomeSlider() {
                 alt={v4()}
                 width={800}
                 height={800}
-                objectFit="cover"
+                priority={true}
               />
+              {session && session.user && session.user.role === "admin" && (
+                <button className="legend" onClick={() => deleteImage(url)}>
+                  Delete
+                </button>
+              )}
             </div>
           );
         })}
