@@ -10,19 +10,33 @@ import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
+const adminEmails = ["sonmezmiray@gmail.com"];
+
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
-    const { user: loggedInUser } = result;
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const { user: loggedInUser } = result;
 
-    if (loggedInUser) {
-      const userRef = doc(db, "users", loggedInUser.uid);
-      await setDoc(userRef, {
-        email: loggedInUser.email,
-      });
+      if (loggedInUser) {
+        const userRef = doc(db, "users", loggedInUser.uid);
+        await setDoc(userRef, {
+          email: loggedInUser.email,
+        });
+
+        if (adminEmails.includes(loggedInUser.email)) {
+          loggedInUser.role = "admin";
+          console.log("User role: admin");
+        } else {
+          loggedInUser.role = "user";
+          console.log("User role: user");
+        }
+      }
+    } catch (error) {
+      console.error("Google Sign-In Error:", error);
     }
   };
 
