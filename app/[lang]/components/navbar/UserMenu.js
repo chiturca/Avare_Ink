@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -18,6 +19,7 @@ export default function UserMenu({ lang }) {
 
   const handleSignOut = async () => {
     try {
+      await signOut();
       await logOut();
     } catch (error) {
       console.log(error);
