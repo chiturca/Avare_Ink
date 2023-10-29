@@ -3,12 +3,14 @@ import React, { useEffect, useRef } from "react";
 // import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useSession, signIn } from "next-auth/react";
 import { UserAuth } from "../api/AuthContext";
 
 const Login = () => {
   const t = useTranslations("Login");
   const router = useRouter();
   const { user, googleSignIn } = UserAuth();
+  const { data: session } = useSession();
   // const recaptchaRef = useRef(null);
 
   const handleSignIn = async () => {
@@ -17,6 +19,7 @@ const Login = () => {
       //   recaptchaRef.current.execute();
       // }
 
+      // await signIn("google");
       await googleSignIn();
     } catch (error) {
       console.log(error);
@@ -24,15 +27,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (user) {
-      router.push("/book");
+    if (session && user) {
+      if (session.user.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/book");
+      }
     }
-    // else {
-    //   if (recaptchaRef.current) {
-    //     recaptchaRef.current.execute();
-    //   }
-    // }
-  }, [router, user]);
+  }, [session, router, user]);
 
   return (
     <div className="border flex flex-col items-center md:w-1/2 m-auto p-14 px-40 rounded-3xl shadow-[5px_5px_15px_-1px_rgba(0,0,0,0.3)] z-50">

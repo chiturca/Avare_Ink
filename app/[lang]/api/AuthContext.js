@@ -10,8 +10,6 @@ import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
-const adminEmails = ["sonmezmiray@gmail.com"];
-
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
@@ -23,16 +21,16 @@ export const AuthContextProvider = ({ children }) => {
 
       if (loggedInUser) {
         const userRef = doc(db, "users", loggedInUser.uid);
-        await setDoc(userRef, {
-          email: loggedInUser.email,
-        });
-
-        if (adminEmails.includes(loggedInUser.email)) {
-          loggedInUser.role = "admin";
-          console.log("User role: admin");
+        if (loggedInUser.email === process.env.NEXT_PUBLIC_ADMIN_MAIL) {
+          await setDoc(userRef, {
+            email: loggedInUser.email,
+            role: "admin",
+          });
         } else {
-          loggedInUser.role = "user";
-          console.log("User role: user");
+          await setDoc(userRef, {
+            email: loggedInUser.email,
+            role: "user",
+          });
         }
       }
     } catch (error) {
