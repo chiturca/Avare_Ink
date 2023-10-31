@@ -1,14 +1,13 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 
 const AdminDashboard = () => {
   const t = useTranslations("Admin");
-  const { data: session } = useSession({ required: true });
+  const { data: session } = useSession();
 
-  console.log(session?.user);
   if (session?.user?.role === "admin") {
     return (
       <div className="p-8">
@@ -21,9 +20,6 @@ const AdminDashboard = () => {
         />
         <div className="text-white">{session?.user?.email}</div>
         <div className="text-white">{session?.user?.role}</div>
-        <button className="text-white" onClick={() => signOut()}>
-          {t("logout")}
-        </button>
         <br />
         <Link href="/">Upload Images</Link>
       </div>
@@ -33,10 +29,6 @@ const AdminDashboard = () => {
       <div>
         <p>You do not have permission to access this page.</p>
         <Link href="/">Go to the main page</Link>
-        <br />
-        <button className="text-white" onClick={() => signOut()}>
-          {t("logout")}
-        </button>
       </div>
     );
   }

@@ -1,10 +1,12 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 // import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useSession, signIn } from "next-auth/react";
 import { UserAuth } from "../api/AuthContext";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../../../firebase";
 
 const Login = () => {
   const t = useTranslations("Login");
@@ -19,21 +21,33 @@ const Login = () => {
       //   recaptchaRef.current.execute();
       // }
 
-      // await signIn("google");
       await googleSignIn();
+      await signIn("google");
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    if (session && user) {
-      if (session.user.role === "admin") {
-        router.push("/admin");
-      } else {
-        router.push("/book");
+    const checkUserRole = async () => {
+      if (session && user) {
+        const userDoc = doc(db, "users", user.uid);
+        const userSnapshot = await getDoc(userDoc);
+
+        if (userSnapshot.exists()) {
+          const userData = userSnapshot.data();
+          const userRole = userData.role;
+
+          if (userRole === "admin") {
+            router.push("/admin");
+          } else {
+            router.push("/book");
+          }
+        }
       }
-    }
+    };
+
+    checkUserRole();
   }, [session, router, user]);
 
   return (
