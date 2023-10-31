@@ -14,8 +14,7 @@ const Login = () => {
   const { user, googleSignIn } = UserAuth();
   const { data: session } = useSession();
   // const recaptchaRef = useRef(null);
-  // console.log(user);
-  // console.log(session?.user);
+
   const handleSignIn = async () => {
     try {
       // if (recaptchaRef.current) {

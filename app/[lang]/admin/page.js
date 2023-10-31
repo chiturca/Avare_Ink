@@ -8,7 +8,6 @@ const AdminDashboard = () => {
   const t = useTranslations("Admin");
   const { data: session } = useSession();
 
-  // console.log(session?.user);
   if (session?.user?.role === "admin") {
     return (
       <div className="p-8">
