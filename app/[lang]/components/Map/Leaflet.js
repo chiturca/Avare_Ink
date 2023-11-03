@@ -1,12 +1,17 @@
 "use client";
+import { useState, useEffect } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { useIsClient } from "../../api/IsClientCtx";
+import "leaflet/dist/leaflet.css";
 
 export default function Leaflet() {
-  const isClient = useIsClient();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   return (
     <div style={{ height: "30em", width: "30em" }}>
-      {isClient && (
+      {isClient ? (
         <MapContainer
           center={[39.93707, 32.86386]}
           zoom={20}
@@ -20,6 +25,8 @@ export default function Leaflet() {
             </Popup>
           </Marker>
         </MapContainer>
+      ) : (
+        ""
       )}
     </div>
   );
