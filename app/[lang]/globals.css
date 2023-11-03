@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-center text-3xl font-bold mb-2;
+  }
+  h2 {
+    @apply mb-3 text-2xl font-semibold;
+  }
+  h3 {
+    @apply mb-3 text-xl font-semibold;
+  }
+  p {
+    @apply m-0 text-sm opacity-50 text-center;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
