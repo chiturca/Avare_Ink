@@ -13,6 +13,7 @@ import { v4 } from "uuid";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Button from "../ui/Button";
 
 export default function HomeSlider() {
   const [imageUpload, setImageUpload] = useState(null);
@@ -91,15 +92,17 @@ export default function HomeSlider() {
   return (
     <div className="max-h-min">
       {session && session.user && session.user.role === "admin" ? (
-        <>
+        <div className="pb-4">
           <input
             type="file"
             onChange={(event) => {
               setImageUpload(event.target.files[0]);
             }}
+            className="px-5 py-1.5 mx-2 bg-sky-200 text-sky-900 font-medium text-xl text-shadow-[0 0 50px #bae6fd] 
+             rounded-full shadow-md hover:bg-sky-900 hover:text-sky-200 hover:shadow-lg"
           />
-          <button onClick={uploadImage}>Upload</button>
-        </>
+          <Button onClick={uploadImage} name="Upload" />
+        </div>
       ) : (
         ""
       )}
@@ -126,7 +129,11 @@ export default function HomeSlider() {
                 priority={true}
               />
               {session && session.user && session.user.role === "admin" && (
-                <button className="legend" onClick={() => deleteImage(url)}>
+                <button
+                  className="absolute top-2 w-[20%] px-7 py-2.5 bg-sky-200 text-sky-900 font-medium text-xl text-shadow-[0 0 50px #bae6fd] 
+                rounded-full shadow-md ease-in duration-300 hover:bg-sky-900 hover:text-sky-200 hover:shadow-lg hover:scale-110"
+                  onClick={() => deleteImage(url)}
+                >
                   Delete
                 </button>
               )}

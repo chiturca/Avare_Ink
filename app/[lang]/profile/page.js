@@ -1,5 +1,4 @@
 import { getDictionary } from "../dictionaries";
-import H1 from "../components/ui/H1";
 import Client from "./Client";
 
 export default async function Profile({ params: { lang } }) {
@@ -7,7 +6,7 @@ export default async function Profile({ params: { lang } }) {
 
   return (
     <div>
-      <H1 name={Profile.title} />
+      <h1>{Profile.title}</h1>
       <Client />
     </div>
   );

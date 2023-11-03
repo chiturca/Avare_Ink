@@ -8,7 +8,7 @@ export default function Denied() {
         You are logged in, but you do not have the required access level to view
         this page.
       </p>
-      <Link href="/" className="text-3xl underline">
+      <Link href="/" className="text-3xl text-sky-500">
         Return to Home Page
       </Link>
     </section>

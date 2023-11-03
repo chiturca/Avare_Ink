@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
+import Denied from "../denied/page";
 
 const AdminDashboard = () => {
   const t = useTranslations("Admin");
@@ -21,16 +22,13 @@ const AdminDashboard = () => {
         <div className="text-white">{session?.user?.email}</div>
         <div className="text-white">{session?.user?.role}</div>
         <br />
-        <Link href="/">Upload Images</Link>
+        <Link href="/" className="text-3xl text-sky-500">
+          Upload Images
+        </Link>
       </div>
     );
   } else {
-    return (
-      <div>
-        <p>You do not have permission to access this page.</p>
-        <Link href="/">Go to the main page</Link>
-      </div>
-    );
+    return <Denied />;
   }
 };
 
