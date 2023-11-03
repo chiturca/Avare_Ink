@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 
 export default function Leaflet() {
+  if (window === undefined) return <></>;
   return (
     <div style={{ height: "30em", width: "30em" }}>
       <MapContainer

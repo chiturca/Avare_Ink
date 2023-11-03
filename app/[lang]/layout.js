@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { i18n } from "../../i18n.config";
 import SessionProvider from "./SessionProvider";
 import Layout from "./components/Layout";
+import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
