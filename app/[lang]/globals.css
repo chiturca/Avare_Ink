@@ -7,13 +7,19 @@
     @apply text-center text-3xl font-bold mb-2;
   }
   h2 {
-    @apply mb-3 text-2xl font-semibold;
+    @apply mb-1 mt-3 text-2xl font-semibold;
   }
   h3 {
-    @apply mb-3 text-xl font-semibold;
+    @apply mb-1 mt-3 text-xl font-semibold;
+  }
+  h4 {
+    @apply mb-1 mt-3 text-lg font-medium;
+  }
+  a {
+    @apply m-0 text-sky-500;
   }
   p {
-    @apply m-0 text-sm opacity-50 text-center;
+    @apply m-0 opacity-50;
   }
 }
 
