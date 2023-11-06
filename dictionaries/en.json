@@ -72,7 +72,31 @@
     "title": "SIGN IN WITH"
   },
   "PrivacyPolicy": {
-    "title": "Privacy Policy"
+    "title": "Privacy Policy",
+    "p": "Your privacy is important to us. This Privacy Policy explains how we collect, use, and disclose information from and about you when you use our website.",
+    "InformationWeCollect": "Information We Collect",
+    "p1": "When you use our website, we may collect and store certain information from you. This information includes:",
+    "GoogleAuthentication": "Google Authentication:",
+    "p2": "When you use Google Authentication to log in, we collect basic information such as your name and email address from your Google account.",
+    "GoogleCalendarIntegration": "Google Calendar Integration:",
+    "p3": "We use Google Calendar to create and manage appointments and reminders. We may access and store data, such as event details, on your Google Calendar for the purpose of sending appointment reminders.",
+    "HowWeUseYourInformation": "How We Use Your Information",
+    "p4": "We use the information collected for the following purposes:",
+    "UserAuthentication": "User Authentication:",
+    "p5": "We use your Google account information to verify your identity and provide you with access to our website.",
+    "AppointmentReminders": "Appointment Reminders:",
+    "p6": "We use your Google Calendar to send appointment reminders. This may include creating events and sending notifications to your Google Calendar.",
+    "DisclosureofYourInformation": "Disclosure of Your Information",
+    "p7": "We do not sell, trade, or otherwise transfer to outside parties your personally identifiable information. This does not include trusted third parties who assist us in operating our website or conducting our business, as long as those parties agree to keep this information confidential.",
+    "AccessandControl": "Access and Control",
+    "p8": "You may have control over your data on our website. You can disconnect your Google account at any time, which will stop our access to your Google Calendar data.",
+    "ThirdpartyLinks": "Third-party Links",
+    "p9": "Our website may contain links to third-party websites. Please be aware that we are not responsible for the privacy practices of such other websites. We encourage our users to be aware when they leave our site and to read the privacy statements of each and every website that collects personally identifiable information.",
+    "GooglePrivacyPolicy": "Google's Privacy Policy",
+    "p10": "Our use of Google services, such as Google Authentication and Google Calendar, is subject to Google's Privacy Policy. You can review Google's Privacy Policy ",
+    "a": "here",
+    "Changes": "Changes to This Privacy Policy",
+    "p11": "We reserve the right to make changes to this Privacy Policy. The updated policy will be posted on this page with a revised `last updated` date."
   },
   "Profile": {
     "title": "Profile"
