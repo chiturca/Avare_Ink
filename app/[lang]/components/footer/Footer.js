@@ -10,7 +10,7 @@ export default function Footer({ lang }) {
   const links = [
     { href: "/about", name: `${t("about")}` },
     { href: "/privacypolicy", name: `${t("privacypolicy")}` },
-    { href: "/licensing", name: `${t("licensing")}` },
+    { href: "/termsofservice", name: "Terms of Service" },
     { href: "/contact", name: `${t("contact")}` },
   ];
   return (
@@ -29,11 +29,12 @@ export default function Footer({ lang }) {
                 <li key={link.href} className="mr-4 hover:underline md:mr-6">
                   <Link
                     className={
-                      (pathname === `/${lang}` || pathname === "/") && link.href === "/"
-                          ? "text-sky-200"
-                          : pathname === `/${lang}${link.href}`
-                          ? "text-sky-200"
-                          : "text-sky-500"
+                      (pathname === `/${lang}` || pathname === "/") &&
+                      link.href === "/"
+                        ? "text-sky-200"
+                        : pathname === `/${lang}${link.href}`
+                        ? "text-sky-200"
+                        : "text-sky-500"
                     }
                     href={`/${lang}${link.href}`}
                   >
