@@ -6,7 +6,7 @@
     "home": "Ana Sayfa",
     "design": "Tasarımlar",
     "aftercare": "Bakım",
-    "contact": "İletişim",
+    "transportation": "Ulaşım",
     "book": "Rezervasyon"
   },
   "usermenu": {
@@ -22,8 +22,8 @@
   "footer": {
     "about": "Hakkında",
     "privacypolicy": "Gizlilik Politikası",
-    "licensing": "Lisans",
-    "contact": "Ulaşım",
+    "termsofservice": "Kullanım Şartları",
+    "contact": "İletişim",
     "reserved": "Tüm Hakları Saklıdır"
   },
   "About": {
@@ -60,21 +60,70 @@
     "Login": "Giriş"
   },
   "Contact": {
-    "directions": "Yol Tarifi"
+    "title": "Bize Yazın"
   },
   "Design": {
     "title": "Tasarımlar"
-  },
-  "Licensing": {
-    "title": "Lisans"
   },
   "Login": {
     "title": "GİRİŞ YAP"
   },
   "PrivacyPolicy": {
-    "title": "Gizlilik Politikası"
+    "title": "Gizlilik Politikası",
+    "p": "Gizliliğiniz bizim için önemlidir. Bu Gizlilik Politikası, web sitemizi kullandığınızda sizden ve sizin hakkınızdaki bilgileri nasıl topladığımızı, kullandığımızı ve ifşa ettiğimizi açıklamaktadır.",
+    "InformationWeCollect": "Topladığımız Bilgiler",
+    "p1": "Web sitemizi kullandığınızda sizden bazı bilgileri toplayabilir ve saklayabiliriz. Bu bilgiler şunları içerir:",
+    "GoogleAuthentication": "Google Kimlik Doğrulaması:",
+    "p2": "Giriş yapmak için Google Kimlik Doğrulamasını kullandığınızda, Google hesabınızdan adınız ve e-posta adresiniz gibi temel bilgileri toplarız.",
+    "GoogleCalendarIntegration": "Google Takvim Entegrasyonu:",
+    "p3": "Randevuları ve hatırlatıcıları oluşturmak ve yönetmek için Google Takvim'i kullanıyoruz. Randevu hatırlatıcıları göndermek amacıyla Google Takviminizdeki etkinlik ayrıntıları gibi verilere erişebilir ve bunları saklayabiliriz.",
+    "HowWeUseYourInformation": "Bilgilerinizi Nasıl Kullanıyoruz",
+    "p4": "Toplanan bilgileri aşağıdaki amaçlarla kullanırız:",
+    "UserAuthentication": "Kullanıcı doğrulama:",
+    "p5": "Kimliğinizi doğrulamak ve web sitemize erişmenizi sağlamak için Google hesap bilgilerinizi kullanırız.",
+    "AppointmentReminders": "Randevu Hatırlatıcıları:",
+    "p6": "Randevu hatırlatıcıları göndermek için Google Takviminizi kullanıyoruz. Bu, etkinlik oluşturmayı ve Google Takviminize bildirim göndermeyi içerebilir.",
+    "DisclosureofYourInformation": "Bilgilerinizin Açıklanması",
+    "p7": "Kişisel olarak tanımlanabilir bilgilerinizi dış taraflara satmıyoruz, takas etmiyoruz veya başka bir şekilde devretmiyoruz. Bu, web sitemizi işletmemize veya işimizi yürütmemize yardımcı olan güvenilir üçüncü tarafları, bu taraflar bu bilgileri gizli tutmayı kabul ettikleri sürece kapsamaz.",
+    "AccessandControl": "Erişim ve Kontrol",
+    "p8": "Web sitemizdeki verileriniz üzerinde kontrol sizde olabilir. İstediğiniz zaman Google hesabınızın bağlantısını kesebilirsiniz; bu, Google Takvim verilerinize erişimimizi durduracaktır.",
+    "ThirdpartyLinks": "Üçüncü Taraf Bağlantıları",
+    "p9": "Web sitemiz üçüncü taraf web sitelerine bağlantılar içerebilir. Bu tür diğer web sitelerinin gizlilik uygulamalarından sorumlu olmadığımızı lütfen unutmayın. Kullanıcılarımızı sitemizden ayrılırken dikkatli olmaya ve kişisel olarak tanımlanabilir bilgiler toplayan her bir web sitesinin gizlilik bildirimlerini okumaya teşvik ediyoruz.",
+    "GooglePrivacyPolicy": "Google'ın Gizlilik Politikası",
+    "p10": "Google Kimlik Doğrulaması ve Google Takvim gibi Google hizmetlerini kullanımımız Google'ın Gizlilik Politikasına tabidir. Google'ın Gizlilik Politikasını ",
+    "a": "buradan inceleyebilirsiniz",
+    "Changes": "Gizlilik Politikasındaki Değişiklikler",
+    "p11": "Bu Gizlilik Politikasında değişiklik yapma hakkımız saklıdır. Güncellenen politika, revize edilmiş `son güncelleme` tarihiyle bu sayfada yayınlanacaktır."
   },
   "Profile": {
     "title": "Profil"
+  },
+  "Transportation": {
+    "directions": "Yol Tarifi"
+  },
+  "ToS": {
+    "title": "Kullanım Şartları",
+    "p": "Web sitemizi kullanarak aşağıdaki kullanım şart ve koşullarına uymayı ve bunlara bağlı kalmayı kabul etmiş olursunuz. Bu şartların herhangi bir bölümünü kabul etmiyorsanız lütfen web sitemizi kullanmayın.",
+    "UserConduct": "Kullanıcı Davranışı",
+    "UserConduct1": "Web sitemizdeki davranış ve davranışlarınızdan yalnızca siz sorumlusunuz.",
+    "UserConduct2": "Web sitemizi yasa dışı amaçlarla kullanmamalısınız.",
+    "UserConduct3": "Diğer kullanıcılara yönelik taciz edici, saldırgan veya zararlı davranışlar kesinlikle yasaktır.",
+    "AccountCreation": "Hesap Oluşturma ve Kullanma",
+    "AccountCreation1": "Hesabınızı oluştururken doğru bilgiler vermelisiniz.",
+    "AccountCreation2": "Giriş bilgilerinizi güvende tutun ve hesap ayrıntılarınızı başkalarıyla paylaşmayın.",
+    "ContentOwnership": "İçerik Sahipliği ve Haklar",
+    "ContentOwnership1": "Web sitemizde oluşturduğunuz ve paylaştığınız içeriğin mülkiyeti size ait olur.",
+    "ContentOwnership2": "Web sitemizde içerik paylaşarak, bize bu içeriği kullanma, görüntüleme ve dağıtma konusunda münhasır olmayan, telifsiz, dünya çapında bir lisans vermiş olursunuz.",
+    "PrivacyDataCollection": "Gizlilik ve Veri Toplama",
+    "PrivacyDataCollection1": "Bilgilerinizi kullanımımız Gizlilik Politikamıza tabidir.",
+    "PrivacyDataCollection2": "Hizmetlerimizi geliştirmek için web sitemizdeki faaliyetlerinizle ilgili verileri topluyor ve saklıyoruz.",
+    "DisputeResolution": "Tartışmalı Karar",
+    "DisputeResolution1": "Web sitemizi kullanımınızla ilgili herhangi bir endişeniz veya anlaşmazlığınız varsa, lütfen bizimle iletişime geçmekten çekinmeyin. Sorunları adil ve etkili bir şekilde çözmeye kararlı olduğumuzdan, öncelikle bizimle iletişime geçmenizi öneririz.",
+    "DisputeResolution2": "Endişelerinizi gidermek ve ilgili tüm tarafları tatmin edecek bir çözüm bulmak için elimizden geleni yapacağız. Bizimle iletişime geçebileceğiniz ",
+    "DisputeA": "İletişim Sayfamız",
+    "DisputeResolution3": "Herhangi bir nedenle bir anlaşmazlığı doğrudan iletişim yoluyla çözemezsek, herhangi bir yasal işlem veya işlemin, kanunlar ihtilafı ilkelerine bakılmaksızın, Türk Yargı Bölgesi yasalarına ve mahkemelerine uygun olarak çözüleceğini kabul edersiniz.",
+    "Termination": "Sonlandırma",
+    "Termination1": "Hizmet Koşullarımızı ihlal etmeniz durumunda hesabınızı sonlandırma veya askıya alma hakkını saklı tutarız.",
+    "Termination2": "Ayrıca hesabınızı istediğiniz zaman devre dışı bırakmayı da seçebilirsiniz."
   }
 }

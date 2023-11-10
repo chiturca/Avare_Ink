@@ -18,7 +18,7 @@ export default function Nav({ lang }) {
     { href: "/", name: `${t("home")}` },
     { href: "/design", name: `${t("design")}` },
     { href: "/aftercare", name: `${t("aftercare")}` },
-    { href: "/contact", name: `${t("contact")}` },
+    { href: "/transportation", name: `${t("transportation")}` },
     { href: "/book", name: `${t("book")}` },
   ];
   return (
