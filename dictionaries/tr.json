@@ -6,7 +6,7 @@
     "home": "Ana Sayfa",
     "design": "Tasarımlar",
     "aftercare": "Bakım",
-    "contact": "İletişim",
+    "transportation": "Ulaşım",
     "book": "Rezervasyon"
   },
   "usermenu": {
@@ -22,8 +22,8 @@
   "footer": {
     "about": "Hakkında",
     "privacypolicy": "Gizlilik Politikası",
-    "licensing": "Lisans",
-    "contact": "Ulaşım",
+    "termsofservice": "Kullanım Şartları",
+    "contact": "İletişim",
     "reserved": "Tüm Hakları Saklıdır"
   },
   "About": {
@@ -60,13 +60,10 @@
     "Login": "Giriş"
   },
   "Contact": {
-    "directions": "Yol Tarifi"
+    "title": "Bize Yazın"
   },
   "Design": {
     "title": "Tasarımlar"
-  },
-  "Licensing": {
-    "title": "Lisans"
   },
   "Login": {
     "title": "GİRİŞ YAP"
@@ -100,5 +97,33 @@
   },
   "Profile": {
     "title": "Profil"
+  },
+  "Transportation": {
+    "directions": "Yol Tarifi"
+  },
+  "ToS": {
+    "title": "Kullanım Şartları",
+    "p": "Web sitemizi kullanarak aşağıdaki kullanım şart ve koşullarına uymayı ve bunlara bağlı kalmayı kabul etmiş olursunuz. Bu şartların herhangi bir bölümünü kabul etmiyorsanız lütfen web sitemizi kullanmayın.",
+    "UserConduct": "Kullanıcı Davranışı",
+    "UserConduct1": "Web sitemizdeki davranış ve davranışlarınızdan yalnızca siz sorumlusunuz.",
+    "UserConduct2": "Web sitemizi yasa dışı amaçlarla kullanmamalısınız.",
+    "UserConduct3": "Diğer kullanıcılara yönelik taciz edici, saldırgan veya zararlı davranışlar kesinlikle yasaktır.",
+    "AccountCreation": "Hesap Oluşturma ve Kullanma",
+    "AccountCreation1": "Hesabınızı oluştururken doğru bilgiler vermelisiniz.",
+    "AccountCreation2": "Giriş bilgilerinizi güvende tutun ve hesap ayrıntılarınızı başkalarıyla paylaşmayın.",
+    "ContentOwnership": "İçerik Sahipliği ve Haklar",
+    "ContentOwnership1": "Web sitemizde oluşturduğunuz ve paylaştığınız içeriğin mülkiyeti size ait olur.",
+    "ContentOwnership2": "Web sitemizde içerik paylaşarak, bize bu içeriği kullanma, görüntüleme ve dağıtma konusunda münhasır olmayan, telifsiz, dünya çapında bir lisans vermiş olursunuz.",
+    "PrivacyDataCollection": "Gizlilik ve Veri Toplama",
+    "PrivacyDataCollection1": "Bilgilerinizi kullanımımız Gizlilik Politikamıza tabidir.",
+    "PrivacyDataCollection2": "Hizmetlerimizi geliştirmek için web sitemizdeki faaliyetlerinizle ilgili verileri topluyor ve saklıyoruz.",
+    "DisputeResolution": "Tartışmalı Karar",
+    "DisputeResolution1": "Web sitemizi kullanımınızla ilgili herhangi bir endişeniz veya anlaşmazlığınız varsa, lütfen bizimle iletişime geçmekten çekinmeyin. Sorunları adil ve etkili bir şekilde çözmeye kararlı olduğumuzdan, öncelikle bizimle iletişime geçmenizi öneririz.",
+    "DisputeResolution2": "Endişelerinizi gidermek ve ilgili tüm tarafları tatmin edecek bir çözüm bulmak için elimizden geleni yapacağız. Bizimle iletişime geçebileceğiniz ",
+    "DisputeA": "İletişim Sayfamız",
+    "DisputeResolution3": "Herhangi bir nedenle bir anlaşmazlığı doğrudan iletişim yoluyla çözemezsek, herhangi bir yasal işlem veya işlemin, kanunlar ihtilafı ilkelerine bakılmaksızın, Türk Yargı Bölgesi yasalarına ve mahkemelerine uygun olarak çözüleceğini kabul edersiniz.",
+    "Termination": "Sonlandırma",
+    "Termination1": "Hizmet Koşullarımızı ihlal etmeniz durumunda hesabınızı sonlandırma veya askıya alma hakkını saklı tutarız.",
+    "Termination2": "Ayrıca hesabınızı istediğiniz zaman devre dışı bırakmayı da seçebilirsiniz."
   }
 }

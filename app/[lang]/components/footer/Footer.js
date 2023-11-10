@@ -10,7 +10,7 @@ export default function Footer({ lang }) {
   const links = [
     { href: "/about", name: `${t("about")}` },
     { href: "/privacypolicy", name: `${t("privacypolicy")}` },
-    { href: "/termsofservice", name: "Terms of Service" },
+    { href: "/termsofservice", name: `${t("termsofservice")}` },
     { href: "/contact", name: `${t("contact")}` },
   ];
   return (

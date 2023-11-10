@@ -6,7 +6,7 @@
     "home": "Home",
     "design": "Design",
     "aftercare": "Aftercare",
-    "contact": "Contact",
+    "transportation": "Transportation",
     "book": "Book"
   },
   "usermenu": {
@@ -22,7 +22,7 @@
   "footer": {
     "about": "About",
     "privacypolicy": "Privacy Policy",
-    "licensing": "Licensing",
+    "termsofservice": "Terms of Service",
     "contact": "Contact",
     "reserved": "All Rights Reserved"
   },
@@ -60,13 +60,10 @@
     "Login": "Login"
   },
   "Contact": {
-    "directions": "Directions"
+    "title": "Contact Us"
   },
   "Design": {
     "title": "Design"
-  },
-  "Licensing": {
-    "title": "License"
   },
   "Login": {
     "title": "SIGN IN WITH"
@@ -100,5 +97,33 @@
   },
   "Profile": {
     "title": "Profile"
+  },
+  "Transportation": {
+    "directions": "Directions"
+  },
+  "ToS": {
+    "title": "Terms of Service",
+    "p": "By using our website, you agree to comply with and be bound by the following terms and conditions of use. If you disagree with any part of these terms, please do not use our website.",
+    "UserConduct": "User Conduct",
+    "UserConduct1": "You are solely responsible for your behavior and conduct on our website.",
+    "UserConduct2": "You must not use our website for any unlawful purposes.",
+    "UserConduct3": "Abusive, offensive, or harmful behavior towards other users is strictly prohibited.",
+    "AccountCreation": "Account Creation and Use",
+    "AccountCreation1": "You must provide accurate information when creating your account.",
+    "AccountCreation2": "Keep your login credentials secure, and do not share your account details with others.",
+    "ContentOwnership": "Content Ownership and Rights",
+    "ContentOwnership1": "You retain ownership of the content you create and share on our website.",
+    "ContentOwnership2": "By sharing content on our website, you grant us a non-exclusive, royalty-free, worldwide license to use, display, and distribute that content.",
+    "PrivacyDataCollection": "Privacy and Data Collection",
+    "PrivacyDataCollection1": "Our use of your information is governed by our Privacy Policy.",
+    "PrivacyDataCollection2": "We collect and store data about your activity on our website to improve our services.",
+    "DisputeResolution": "Dispute Resolution",
+    "DisputeResolution1": "If you have any concerns or disputes regarding your use of our website, please feel free to get in touch with us. We encourage you to contact us first, as we are committed to resolving issues in a fair and efficient manner.",
+    "DisputeResolution2": "We will do our best to address your concerns and find a solution that satisfies all parties involved. You can reach us via our ",
+    "DisputeA": "Contact Page",
+    "DisputeResolution3": "If for any reason we are unable to resolve a dispute through direct communication, you agree that any legal action or proceeding will be resolved in accordance with the laws and courts of Turkish Jurisdiction, without regard to its conflict of law principles.",
+    "Termination": "Termination",
+    "Termination1": "We reserve the right to terminate or suspend your account if you violate our Terms of Service.",
+    "Termination2": "You may also choose to deactivate your account at any time."
   }
 }
