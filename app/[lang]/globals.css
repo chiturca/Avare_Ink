@@ -21,6 +21,12 @@
   p {
     @apply m-0 opacity-50;
   }
+  input {
+    @apply opacity-50 p-3 m-2 rounded-lg;
+  }
+  textarea {
+    @apply opacity-50 p-3 m-2 rounded-lg min-h-[150px];
+  }
 }
 
 :root {
