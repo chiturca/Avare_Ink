@@ -6,6 +6,14 @@ export default async function TermsOfService({ params: { lang } }) {
   return (
     <div>
       <h1>{ToS.title}</h1>
+      <div className="w-max">
+        <hr />
+        <span className="text-sky-500 opacity-50 px-3">
+          {ToS.lastUpdated}
+          {ToS.lastUpdated1}
+        </span>
+        <hr />
+      </div>
       <p>{ToS.p}</p>
       <h2>{ToS.UserConduct}</h2>
       <ul className="list-disc opacity-50">

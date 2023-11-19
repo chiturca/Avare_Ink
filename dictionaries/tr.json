@@ -70,6 +70,8 @@
   },
   "PrivacyPolicy": {
     "title": "Gizlilik Politikası",
+    "lastUpdated": "Son güncelleme: ",
+    "lastUpdated1": "19 Kasım, 2023",
     "p": "Gizliliğiniz bizim için önemlidir. Bu Gizlilik Politikası, web sitemizi kullandığınızda sizden ve sizin hakkınızdaki bilgileri nasıl topladığımızı, kullandığımızı ve ifşa ettiğimizi açıklamaktadır.",
     "InformationWeCollect": "Topladığımız Bilgiler",
     "p1": "Web sitemizi kullandığınızda sizden bazı bilgileri toplayabilir ve saklayabiliriz. Bu bilgiler şunları içerir:",
@@ -103,6 +105,8 @@
   },
   "ToS": {
     "title": "Kullanım Şartları",
+    "lastUpdated": "Son güncelleme: ",
+    "lastUpdated1": "19 Kasım, 2023",
     "p": "Web sitemizi kullanarak aşağıdaki kullanım şart ve koşullarına uymayı ve bunlara bağlı kalmayı kabul etmiş olursunuz. Bu şartların herhangi bir bölümünü kabul etmiyorsanız lütfen web sitemizi kullanmayın.",
     "UserConduct": "Kullanıcı Davranışı",
     "UserConduct1": "Web sitemizdeki davranış ve davranışlarınızdan yalnızca siz sorumlusunuz.",

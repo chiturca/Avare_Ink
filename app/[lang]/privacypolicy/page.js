@@ -5,8 +5,15 @@ export default async function PrivacyPolicy({ params: { lang } }) {
   return (
     <div>
       <h1>{PrivacyPolicy.title}</h1>
+      <div className="w-max">
+        <hr />
+        <span className="text-sky-500 opacity-50 px-3">
+          {PrivacyPolicy.lastUpdated}
+          {PrivacyPolicy.lastUpdated1}
+        </span>
+        <hr />
+      </div>
       <p>{PrivacyPolicy.p}</p>
-      <br />
       <h2>{PrivacyPolicy.InformationWeCollect}</h2>
       <p>{PrivacyPolicy.p1}</p>
       <ul className="list-decimal ml-8">
@@ -40,7 +47,7 @@ export default async function PrivacyPolicy({ params: { lang } }) {
       <p>{PrivacyPolicy.p9}</p>
       <h3>{PrivacyPolicy.GooglePrivacyPolicy}</h3>
       <p>
-        {PrivacyPolicy.p10}{" "}
+        {PrivacyPolicy.p10}
         <a href="https://policies.google.com/privacy">{PrivacyPolicy.a}</a>.
       </p>
       <h3>{PrivacyPolicy.Changes}</h3>

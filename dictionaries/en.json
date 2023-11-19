@@ -70,6 +70,8 @@
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",
+    "lastUpdated": "Last updated: ",
+    "lastUpdated1": "November 19, 2023",
     "p": "Your privacy is important to us. This Privacy Policy explains how we collect, use, and disclose information from and about you when you use our website.",
     "InformationWeCollect": "Information We Collect",
     "p1": "When you use our website, we may collect and store certain information from you. This information includes:",
@@ -103,6 +105,8 @@
   },
   "ToS": {
     "title": "Terms of Service",
+    "lastUpdated": "Last updated: ",
+    "lastUpdated1": "November 19, 2023",
     "p": "By using our website, you agree to comply with and be bound by the following terms and conditions of use. If you disagree with any part of these terms, please do not use our website.",
     "UserConduct": "User Conduct",
     "UserConduct1": "You are solely responsible for your behavior and conduct on our website.",
