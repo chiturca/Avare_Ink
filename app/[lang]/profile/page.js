@@ -6,7 +6,7 @@ export default async function Profile({ params: { lang } }) {
 
   return (
     <div>
-      <h1>{Profile.title}</h1>
+      <h1 className="hidden">{Profile.title}</h1>
       <Client />
     </div>
   );

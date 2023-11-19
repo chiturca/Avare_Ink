@@ -8,8 +8,8 @@ export default function Client() {
   const { user } = UserAuth();
   console.log("user:", user);
   return (
-    <div className="bg-white rounded-3xl shadow-lg m-auto my-10 p-8">
-      <div className="relative flex max-md:flex-col  border-b-2 items-center gap-10 pb-5 md:justify-around  md:mx-24 mx-10">
+    <div className="bg-gray-700 rounded-3xl shadow-lg m-auto p-8">
+      <div className="relative flex max-md:flex-col border-b-2 items-center gap-10 pb-5 md:justify-around  md:mx-24 mx-10">
         <div className="flex flex-col items-center max-md:p-10">
           <Image
             className="m-auto rounded-full"
