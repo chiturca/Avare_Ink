@@ -27,6 +27,9 @@
   textarea {
     @apply opacity-50 p-3 m-2 rounded-lg min-h-[150px];
   }
+  hr {
+    @apply border-sky-500 opacity-50 my-3;
+  }
 }
 
 :root {
