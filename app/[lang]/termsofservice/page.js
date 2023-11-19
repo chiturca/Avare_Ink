@@ -37,10 +37,10 @@ export default async function TermsOfService({ params: { lang } }) {
         </li>
         <li>{ToS.DisputeResolution3}</li>
       </ul>
-      <h2>{ToS.p}</h2>
+      <h2>{ToS.Termination}</h2>
       <ul className="list-disc opacity-50">
-        <li>{ToS.p}</li>
-        <li>{ToS.p}</li>
+        <li>{ToS.Termination1}</li>
+        <li>{ToS.Termination2}</li>
       </ul>
     </div>
   );
