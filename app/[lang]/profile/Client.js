@@ -1,12 +1,12 @@
 "use client";
 import { UserAuth } from "../api/AuthContext";
-import ProfileSlider from "../components/Slider/ProfileSlider";
+import ProfileList from "../components/ProfileList";
 import img from "../assets/logo2.png";
 import Image from "next/image";
 
 export default function Client() {
   const { user } = UserAuth();
-  console.log("user:", user);
+
   return (
     <div className="bg-gray-700 rounded-3xl shadow-lg m-auto p-8">
       <div className="relative flex max-md:flex-col border-b-2 items-center gap-10 pb-5 md:justify-around  md:mx-24 mx-10">
@@ -29,7 +29,7 @@ export default function Client() {
         <div className="">
           {user ? (
             <div>
-              <ProfileSlider />
+              <ProfileList />
             </div>
           ) : (
             <div className="flex justify-center mt-10">Make reservation</div>

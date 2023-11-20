@@ -1,7 +1,7 @@
 const Card = ({ title, description, onClick, className }) => {
   return (
     <div
-      className="cursor-pointer group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+      className="max-w-[30ch] h-[15ch] cursor-pointer group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
       target="_blank"
       rel="noopener noreferrer"
       onClick={onClick}

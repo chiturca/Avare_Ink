@@ -109,6 +109,7 @@ export default function Scheduler() {
         )
       ),
       size: date.selectedSize,
+      uid: user.uid
     };
     await addDoc(collection(db, "appointments"), newAppointment);
 
