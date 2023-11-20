@@ -11,7 +11,7 @@ export const getUserAppointments = async (uid) => {
   return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 };
 
-export default function ProfileList() {
+export default function ProfileList({ lang }) {
   const { user } = UserAuth();
   const [userAppointments, setUserAppointments] = useState([]);
 
@@ -30,6 +30,7 @@ export default function ProfileList() {
         <div key={index} className="m-3 flex">
           {appointment.uid === user.uid && (
             <Card
+              className="cursor-default"
               title={appointment.title}
               description={`Start Time: ${appointment.start
                 .toDate()
