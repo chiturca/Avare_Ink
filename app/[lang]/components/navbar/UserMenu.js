@@ -67,14 +67,18 @@ export default function UserMenu({ lang }) {
                 textValue={t("dropdownSettings")}
                 withDivider
               >
-                <Link href={`/${lang}/profile`}>{t("dropdownSettings")}</Link>
+                <Link href={`/${lang}/profile`} className="text-white">
+                  {t("dropdownSettings")}
+                </Link>
               </DropdownItem>
               <DropdownItem
                 key="help_and_feedback"
                 textValue={t("dropdownHelp&Feedback")}
                 withDivider
               >
-                {t("dropdownHelp&Feedback")}
+                <Link href={`/${lang}/contact`} className="text-white">
+                  {t("dropdownHelp&Feedback")}
+                </Link>
               </DropdownItem>
               <DropdownItem
                 key="logout"

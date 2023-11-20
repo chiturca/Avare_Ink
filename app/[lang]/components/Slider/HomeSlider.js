@@ -98,7 +98,7 @@ export default function HomeSlider() {
             onChange={(event) => {
               setImageUpload(event.target.files[0]);
             }}
-            className="px-5 py-1.5 mx-2 bg-sky-200 text-sky-900 font-medium text-xl text-shadow-[0 0 50px #bae6fd] 
+            className="opacity-100 px-5 py-1.5 mx-2 bg-sky-200 text-sky-900 font-medium text-xl text-shadow-[0 0 50px #bae6fd] 
              rounded-full shadow-md hover:bg-sky-900 hover:text-sky-200 hover:shadow-lg"
           />
           <Button onClick={uploadImage} name="Upload" />
