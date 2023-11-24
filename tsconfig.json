@@ -26,7 +26,8 @@
     "**/*.tsx",
     "middleware.js",
     "pages/api/auth/[...nextauth].ts",
-    "firebase.js"
+    "firebase.js",
+    "app/[lang]/api/AuthContext.ts"
   ],
   "exclude": ["node_modules"]
 }

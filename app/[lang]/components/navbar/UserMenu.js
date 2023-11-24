@@ -11,11 +11,13 @@ import {
 } from "@nextui-org/react";
 import { UserAuth } from "../../api/AuthContext";
 import Button from "../ui/Button";
+import { useRouter } from "next/navigation";
 
 export default function UserMenu({ lang }) {
   const t = useTranslations("usermenu");
   const { user, logOut } = UserAuth();
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   const handleSignOut = async () => {
     try {
