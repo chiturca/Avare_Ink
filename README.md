@@ -71,7 +71,7 @@ Now, you should have the portfolio running locally on your machine for testing a
 
 ## Project Showcase <a name="project-showcase"></a>
 
-//Will be displayed in near future
+![AvareInk-GoogleChrome2024-01-3000-37-59-ezgif com-video-to-gif-converter](https://github.com/chiturca/Avare_Ink/assets/113294105/4b4623b7-d9d4-44d7-9e5a-49402678c3ec)
 
 ### Live Demo
 
