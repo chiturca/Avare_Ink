@@ -21,6 +21,7 @@ export default function Nav({ lang }) {
     { href: "/transportation", name: `${t("transportation")}` },
     { href: "/book", name: `${t("book")}` },
   ];
+  const getHref = (path) => (lang === "en" ? `/${lang}${path}` : path);
   return (
     <>
       <div className="flex sticky top-0 z-10 w-full justify-between font-mono text-sm dark">
@@ -41,11 +42,11 @@ export default function Nav({ lang }) {
                         (pathname === `/${lang}` || pathname === "/") &&
                         link.href === "/"
                           ? "text-sky-200"
-                          : pathname === `/${lang}${link.href}`
+                          : pathname === getHref(link.href)
                           ? "text-sky-200"
                           : "text-sky-500"
                       }
-                      href={`/${lang}${link.href}`}
+                      href={getHref(link.href)}
                     >
                       {link.name}
                     </Link>
