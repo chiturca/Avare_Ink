@@ -13,6 +13,7 @@ export default function Footer({ lang }) {
     { href: "/termsofservice", name: `${t("termsofservice")}` },
     { href: "/contact", name: `${t("contact")}` },
   ];
+  const getHref = (path) => (lang === "en" ? `/${lang}${path}` : path);
   return (
     <div className="bottom-0 left-0 z-10 w-full justify-between font-mono text-sm dark">
       <footer className="static border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit  rounded-xl border bg-gray-200 lg:p-2 drop-shadow-lg m-4">
@@ -32,11 +33,11 @@ export default function Footer({ lang }) {
                       (pathname === `/${lang}` || pathname === "/") &&
                       link.href === "/"
                         ? "text-sky-200"
-                        : pathname === `/${lang}${link.href}`
+                        : pathname === getHref(link.href)
                         ? "text-sky-200"
                         : "text-sky-500"
                     }
-                    href={`/${lang}${link.href}`}
+                    href={getHref(link.href)}
                   >
                     {link.name}
                   </Link>
