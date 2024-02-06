@@ -39,7 +39,18 @@
     "button": "Giriş Yap"
   },
   "Aftercare": {
-    "title": "Bakım"
+    "title": "Bakım",
+    "li1": "Sanatçınızın yeni dövmenizi bir bandajla kapattığından emin olun.",
+    "li2": "Bandajı 24 saat sonra (veya dövme sanatçınız tavsiye ediyorsa daha erken) çıkarın. Bandajı çıkarmadan önce ellerinizi yıkayın.",
+    "li3": "Dövmeyi sabun (varsa antibakteriyel) ve suyla nazikçe yıkayın ve temiz bir kağıt havluyla kurulayın.",
+    "li4": "Bir kat nemlendirici antibiyotik merhem sürün, ancak başka bir bandaj koymayın.",
+    "li5": "Dövme bölgenizi günde üç kez sabun ve suyla dikkatlice yıkayın ve hafifçe dokunarak kurulayın.",
+    "li6": "Dövmenizi temizledikten sonra nemli tutmak için nemlendirici veya merhem sürmeye devam edin. 5 gün sonra antibiyotikli merhemden hafif kokusuz vücut losyonuna geçebilirsiniz. Bu işlemi 2-4 hafta kadar tekrarlamalısınız.",
+    "li7": "Dövmeniz biraz kabuk tutuyorsa veya sert katmanlar oluşturuyorsa endişelenmeyin, bu normaldir. Ancak dövmenizi asla koparmayın, çizmeyin veya soymayın. Enfeksiyon kapabilir veya rengi kaldırabilirsiniz. Dövmenizin enfeksiyon kaptığını veya düzgün şekilde iyileşmediğini düşünüyorsanız doktorunuza görünün.",
+    "li8": "Yaklaşık 2 hafta boyunca yüzmekten ve güneşten kaçının. Düzgün iyileşmesi için en iyi şansı vermek için dövmenizi kuru ve doğrudan güneş ışığından uzak tutmak istiyorsunuz.",
+    "li9": "Dar kıyafetler giymekten kaçının. Dövmenize yapışan giysiler rahatsız edici olabilir ve iyileşme sürecini geciktirebilir.",
+    "li10": "Soğuk duş alın. Sıcak su sadece dövmeli bölgeyi haşlayıp ona zarar vermekle kalmaz, aynı zamanda mürekkebin solmasına da neden olabilir.",
+    "li11": "Güneş koruyucu ve nemlendiriciyi sık sık kullanın. Dövme dükkanından çıktığınızda mürekkebiniz parlak ve parlak olacaktır. Ancak unutmayın, tüm dövmeler zamanla solar. Renklerin parlak kalması için özellikle yaz aylarında dövmenize mutlaka güneş kremi sürün. En iyi koruma için SPF 30 veya daha yüksek bir güneş koruyucu seçin. Dövmenizi her gün nemlendirin, özellikle elleriniz gibi vücudunuzun hızla solması muhtemel bir bölgesindeyse."
   },
   "Book": {
     "h2": "Dövmenizin boyutunu seçiniz",

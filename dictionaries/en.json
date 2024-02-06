@@ -39,7 +39,18 @@
     "button": "Sign in"
   },
   "Aftercare": {
-    "title": "Aftercare"
+    "title": "Aftercare",
+    "li1": "Be sure your artist covers your new tattoo in a bandage.",
+    "li2": "Remove the bandage after 24 hours (or sooner, if your tattoo artist recommends it). Wash your hands before taking off the bandage.",
+    "li3": "Gently wash the tattoo with soap (antibacterial if available) and water, and pat dry with a clean paper towel.",
+    "li4": "Apply a layer of moisturizing antibiotic ointment, but don’t put on another bandage.",
+    "li5": "Carefully wash your tattoo area three times a day with soap and water , and gently pat it dry.",
+    "li6": "Keep applying a moisturizer or ointment after you clean your tattoo to keep it moist. After 5 days, you can switch from an antibiotic ointment to a gentle fragrance-free body lotion. You should repeat this process for 2-4 weeks.",
+    "li7": "If your tattoo scabs a bit or develops hard layers, don’t worry, it’s normal. But never pick, scratch, or peel your tattoo. You could get an infection or remove the color. If you think your tattoo is infected or isn’t healing properly, see your doctor.",
+    "li8": "Avoid swimming and the sun for about 2 weeks. You want to keep your tattoo dry and out of direct sun to give it the best chance to heal properly.",
+    "li9": "Avoid wearing tight clothing. Clothes that stick to your tattoo can be uncomfortable and delay the healing process.",
+    "li10": "Take cool showers. Scalding hot water will not only hurt, but it can also fade the ink.",
+    "li11": "Use sunscreen and moisturizer often. When you leave the tattoo shop, your ink will be bright and shiny. But remember, all tattoos fade over time. Always apply sunscreen on your tattoo, especially in the summer, to keep the colors bright. Choose a sunscreen with SPF 30 or higher for best protection. Moisturize your tattoo daily, especially if it’s on an area of your body, such as your hands, where it can fade quickly."
   },
   "Book": {
     "h2": "Please select your tattoo details",

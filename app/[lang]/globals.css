@@ -30,6 +30,9 @@
   hr {
     @apply border-sky-500 opacity-50 my-3;
   }
+  li {
+    @apply mb-2;
+  }
 }
 
 :root {
